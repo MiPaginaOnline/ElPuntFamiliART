@@ -16,6 +16,8 @@
             --texto: #4A4A4A;
             --gris: #8A8A8A;
             --borde: #E0E0E0;
+            --titulo-principal: #E8B4B8;
+            --titulo-secundario: #A67C52;
         }
         
         * {
@@ -43,13 +45,18 @@
             line-height: 1.3;
         }
         
-        /* Header */
+        /* Header - Mejorado con sticky permanente y efecto blur */
         header {
-            background-color: var(--blanco);
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             width: 100%;
+            position: fixed;
+            top: 0;
             z-index: 1000;
             padding: 15px 5%;
+            transition: all 0.3s ease;
         }
         
         .header-container {
@@ -178,7 +185,7 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 50px 5% 50px;
+            padding: 120px 5% 50px; /* Aumentado padding-top para compensar header fijo */
             position: relative;
             overflow: hidden;
             background-color: var(--blanco);
@@ -192,11 +199,12 @@
         }
         
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 20px;
-            color: var(--texto);
+            color: var(--titulo-principal);
             position: relative;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            line-height: 1.1;
         }
         
         .hero h1::after {
@@ -220,13 +228,13 @@
             display: inline-block;
             background-color: var(--rosa);
             color: var(--blanco);
-            padding: 14px 32px;
+            padding: 12px 25px;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
             border: none;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             letter-spacing: 0.5px;
         }
@@ -241,12 +249,18 @@
             background-color: transparent;
             border: 1px solid var(--rosa);
             color: var(--rosa);
-            margin-left: 15px;
+            margin-left: 10px;
         }
         
         .btn-outline:hover {
             background-color: var(--rosa);
             color: var(--blanco);
+        }
+        
+        .contact-message {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: var(--gris);
         }
         
         .hero-images {
@@ -322,8 +336,8 @@
         }
         
         .section-header h2 {
-            font-size: 2.8rem;
-            color: var(--texto);
+            font-size: 3.2rem;
+            color: var(--titulo-principal);
             margin-bottom: 15px;
             position: relative;
             display: inline-block;
@@ -366,9 +380,9 @@
         }
         
         .about-content h3 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             margin-bottom: 30px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             font-weight: 600;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
@@ -386,18 +400,31 @@
         }
         
         .team-section h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 40px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             text-align: center;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
         .team-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
             justify-content: center;
+            align-items: center;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
         
         .team-member {
@@ -408,6 +435,7 @@
             max-width: 350px;
             transition: all 0.4s ease;
             border: 1px solid var(--borde);
+            flex: 0 0 100%;
         }
         
         .team-member:hover {
@@ -449,7 +477,7 @@
         .member-info h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
@@ -457,6 +485,40 @@
             color: var(--gris);
             line-height: 1.6;
             font-size: 1rem;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--rosa);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-btn:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.prev {
+            left: -70px;
+        }
+        
+        .carousel-btn.next {
+            right: -70px;
         }
         
         /* Proyecto y Objetivos */
@@ -493,9 +555,9 @@
         }
         
         .project-content h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
@@ -584,11 +646,17 @@
             to { opacity: 1; }
         }
         
-        .stages-container {
+        .stage-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .stage-track {
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
+            transition: transform 0.5s ease;
         }
         
         .stage-card {
@@ -600,6 +668,8 @@
             text-align: center;
             transition: all 0.4s ease;
             border: 1px solid var(--borde);
+            flex: 0 0 100%;
+            margin: 0 auto;
         }
         
         .stage-card:hover {
@@ -610,7 +680,7 @@
         .stage-card h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
@@ -696,6 +766,7 @@
             flex-wrap: wrap;
             gap: 50px;
             align-items: flex-start;
+            position: relative;
         }
         
         .workshop-info {
@@ -704,9 +775,9 @@
         }
         
         .workshop-info h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
@@ -718,6 +789,18 @@
         .workshop-list {
             flex: 1;
             min-width: 300px;
+            position: relative;
+        }
+        
+        .workshop-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .workshop-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
         
         .workshop-item {
@@ -728,6 +811,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             border: 1px solid var(--borde);
+            flex: 0 0 100%;
         }
         
         .workshop-item:hover {
@@ -738,7 +822,7 @@
         .workshop-item h4 {
             font-size: 1.3rem;
             margin-bottom: 10px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
@@ -768,6 +852,7 @@
             flex-wrap: wrap;
             gap: 50px;
             align-items: flex-start;
+            position: relative;
         }
         
         .events-info {
@@ -776,9 +861,9 @@
         }
         
         .events-info h3 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
@@ -790,6 +875,18 @@
         .events-list {
             flex: 1;
             min-width: 300px;
+            position: relative;
+        }
+        
+        .events-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .events-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
         
         .event-item {
@@ -800,6 +897,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             border: 1px solid var(--borde);
+            flex: 0 0 100%;
         }
         
         .event-item:hover {
@@ -810,7 +908,7 @@
         .event-item h4 {
             font-size: 1.3rem;
             margin-bottom: 10px;
-            color: var(--texto);
+            color: var(--titulo-secundario);
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
@@ -990,13 +1088,13 @@
             right: 25px;
             background-color: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             transition: all 0.4s ease;
@@ -1013,7 +1111,7 @@
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding-top: 50px;
+                padding-top: 100px; /* Ajustado para header fijo */
             }
             
             .hero-content {
@@ -1021,7 +1119,7 @@
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
             }
             
             .hero p {
@@ -1070,7 +1168,7 @@
             }
             
             .section-header h2 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .section-header p {
@@ -1091,7 +1189,9 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: var(--blanco);
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
                 z-index: 999;
                 padding: 20px;
@@ -1113,9 +1213,9 @@
                 text-decoration: none;
                 color: var(--texto);
                 font-weight: 500;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
                 display: block;
-                padding: 10px 0;
+                padding: 8px 0;
                 border-bottom: 1px solid var(--borde);
             }
             
@@ -1127,13 +1227,33 @@
             }
             
             .mobile-nav-buttons .nav-button {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
                 padding: 8px 15px;
+            }
+            
+            /* Ocultar logo con imagen en móvil */
+            .logo {
+                display: none;
+            }
+            
+            /* Mostrar solo nombre del negocio en móvil */
+            .mobile-logo {
+                display: block;
+                text-align: center;
+                margin-bottom: 20px;
+                font-family: 'Playfair Display', serif;
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: var(--texto);
+            }
+            
+            .mobile-logo span {
+                color: var(--rosa);
             }
             
             /* Mejoras para móvil */
             section {
-                padding: 60px 5%;
+                padding: 80px 5% 60px; /* Ajustado para header fijo */
             }
             
             .about-content p, .project-content p, .workshop-info p, .events-info p {
@@ -1171,15 +1291,29 @@
             .contact-details p, .contact-details a {
                 font-size: 0.9rem;
             }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .carousel-btn.prev {
+                left: -50px;
+            }
+            
+            .carousel-btn.next {
+                right: -50px;
+            }
         }
         
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
             }
             
             .section-header h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .tabs {
@@ -1199,15 +1333,23 @@
             .project-image, .project-content, .workshop-info, .workshop-list, .events-info, .events-list, .contact-info, .map-container {
                 width: 100%;
             }
+            
+            .carousel-btn.prev {
+                left: -30px;
+            }
+            
+            .carousel-btn.next {
+                right: -30px;
+            }
         }
         
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.3rem;
             }
             
             .section-header h2 {
-                font-size: 1.8rem;
+                font-size: 1.9rem;
             }
             
             .btn-container {
@@ -1228,11 +1370,25 @@
                 width: 40px;
                 height: 40px;
             }
+            
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .carousel-btn.prev {
+                left: -20px;
+            }
+            
+            .carousel-btn.next {
+                right: -20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header - Mejorado con sticky permanente y efecto blur -->
     <header>
         <div class="header-container">
             <div class="logo">
@@ -1261,6 +1417,7 @@
             </nav>
         </div>
         <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-logo">El Punt Famili<span>ART</span></div>
             <ul class="mobile-nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#quien-somos">Quiénes Somos</a></li>
@@ -1285,6 +1442,9 @@
             <div class="btn-container">
                 <a href="reservas.html" class="btn">Reservar Plaza</a>
                 <a href="#contacto" class="btn btn-outline">Contactar</a>
+            </div>
+            <div class="contact-message">
+                <p>¿Tienes dudas? Puedes contactarnos usando el botón <strong>"Contactar"</strong> de arriba</p>
             </div>
         </div>
         <div class="hero-images">
@@ -1318,30 +1478,39 @@
                 <h3>Nuestra Historia</h3>
                 <p>El Punt FamiliART nació de la pasión por el arte y la educación, con el objetivo de crear un espacio donde la creatividad y la comunidad se encuentren. Un lugar para que niños, jóvenes y adultos puedan explorar, aprender, compartir y dejar que la imaginación florezca.</p>
                 <p>Es el inicio de una nueva etapa, hecha con cariño, raíces y mucha ilusión. Un espacio de creación y transformación donde el arte se convierte en una herramienta de expresión, crecimiento personal y conexión con los demás.</p>
-                <p>Nuestro proyecto combina la experiencia en educación artística con un enfoque terapéutico, creando un ambiente seguro donde cada persona puede descubrir y desarrollar su potencial creativo.</p>
             </div>
             
             <div class="team-section">
                 <h3>Nuestro Equipo</h3>
                 <div class="team-container">
-                    <div class="team-member">
-                        <div class="member-img eva">
-                            <!-- Imagen de Eva -->
-                        </div>
-                        <div class="member-info">
-                            <h3>Eva</h3>
-                            <p>Arteterapeuta y artista, con años de experiencia en educación artística. Mi pasión es acompañar procesos creativos y emocionales con sensibilidad y cuidado, creando espacios donde cada persona pueda expresarse con libertad.</p>
+                    <button class="carousel-btn prev" id="teamPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="teamTrack">
+                            <div class="team-member">
+                                <div class="member-img eva">
+                                    <!-- Imagen de Eva -->
+                                </div>
+                                <div class="member-info">
+                                    <h3>Eva</h3>
+                                    <p>Arteterapeuta y artista, con años de experiencia en educación artística. Mi pasión es acompañar procesos creativos y emocionales con sensibilidad y cuidado, creando espacios donde cada persona pueda expresarse con libertad.</p>
+                                </div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-img laura">
+                                    <!-- Imagen de Laura -->
+                                </div>
+                                <div class="member-info">
+                                    <h3>Laura</h3>
+                                    <p>Maestra de infantil y primaria, con experiencia en el mundo de la educación y un vínculo muy especial con los peques, a quienes me gusta acompañar desde la ternura, la cercanía y el juego.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="team-member">
-                        <div class="member-img laura">
-                            <!-- Imagen de Laura -->
-                        </div>
-                        <div class="member-info">
-                            <h3>Laura</h3>
-                            <p>Maestra de infantil y primaria, con experiencia en el mundo de la educación y un vínculo muy especial con los peques, a quienes me gusta acompañar desde la ternura, la cercanía y el juego.</p>
-                        </div>
-                    </div>
+                    <button class="carousel-btn next" id="teamNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1389,25 +1558,35 @@
             </div>
             
             <div class="tab-content active" id="etapas">
-                <div class="stages-container">
-                    <div class="stage-card">
-                        <h3>Infantil</h3>
-                        <p>Para los más pequeños, un espacio donde explorar texturas, colores y formas a través del juego y la experimentación.</p>
-                        <p><strong>Edades:</strong> I3, I4 y I5</p>
-                        <p><strong>Precio:</strong> 50€/mes + matrícula</p>
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="stagePrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="stage-carousel">
+                        <div class="stage-track" id="stageTrack">
+                            <div class="stage-card">
+                                <h3>Infantil</h3>
+                                <p>Para los más pequeños, un espacio donde explorar texturas, colores y formas a través del juego y la experimentación.</p>
+                                <p><strong>Edades:</strong> I3, I4 y I5</p>
+                                <p><strong>Precio:</strong> 50€/mes + matrícula</p>
+                            </div>
+                            <div class="stage-card">
+                                <h3>Primaria</h3>
+                                <p>Desarrollo de habilidades artísticas y creativas adaptadas a cada ciclo de primaria, fomentando la expresión personal.</p>
+                                <p><strong>Ciclos:</strong> Inicial, Medio y Superior</p>
+                                <p><strong>Precio:</strong> 50€/mes + matrícula</p>
+                            </div>
+                            <div class="stage-card">
+                                <h3>Adultos</h3>
+                                <p>Un espacio para desconectar, explorar técnicas artísticas y conectar con tu creatividad en un ambiente relajado.</p>
+                                <p><strong>Modalidades:</strong> Con o sin materiales incluidos</p>
+                                <p><strong>Precio:</strong> 55-65€/mes + matrícula</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stage-card">
-                        <h3>Primaria</h3>
-                        <p>Desarrollo de habilidades artísticas y creativas adaptadas a cada ciclo de primaria, fomentando la expresión personal.</p>
-                        <p><strong>Ciclos:</strong> Inicial, Medio y Superior</p>
-                        <p><strong>Precio:</strong> 50€/mes + matrícula</p>
-                    </div>
-                    <div class="stage-card">
-                        <h3>Adultos</h3>
-                        <p>Un espacio para desconectar, explorar técnicas artísticas y conectar con tu creatividad en un ambiente relajado.</p>
-                        <p><strong>Modalidades:</strong> Con o sin materiales incluidos</p>
-                        <p><strong>Precio:</strong> 55-65€/mes + matrícula</p>
-                    </div>
+                    <button class="carousel-btn next" id="stageNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
             
@@ -1519,29 +1698,41 @@
                 <a href="reservas.html" class="btn">Reserva tu plaza</a>
             </div>
             <div class="workshop-list">
-                <div class="workshop-item">
-                    <h4>Pintura con Acuarela</h4>
-                    <p>Descubre las técnicas básicas de la acuarela y crea tus propias obras llenas de color y transparencia.</p>
-                    <div class="workshop-meta">
-                        <span>Viernes 18:00-20:00</span>
-                        <span>25€</span>
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="workshopPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="workshop-carousel">
+                        <div class="workshop-track" id="workshopTrack">
+                            <div class="workshop-item">
+                                <h4>Pintura con Acuarela</h4>
+                                <p>Descubre las técnicas básicas de la acuarela y crea tus propias obras llenas de color y transparencia.</p>
+                                <div class="workshop-meta">
+                                    <span>Viernes 18:00-20:00</span>
+                                    <span>25€</span>
+                                </div>
+                            </div>
+                            <div class="workshop-item">
+                                <h4>Creación con Arcilla</h4>
+                                <p>Modela y da forma a la arcilla para crear piezas únicas que luego podrás pintar y llevar a casa.</p>
+                                <div class="workshop-meta">
+                                    <span>Viernes 18:00-20:00</span>
+                                    <span>30€</span>
+                                </div>
+                            </div>
+                            <div class="workshop-item">
+                                <h4>Arte Reciclado</h4>
+                                <p>Aprende a transformar materiales cotidianos en obras de arte originales y respetuosas con el medio ambiente.</p>
+                                <div class="workshop-meta">
+                                    <span>Viernes 18:00-20:00</span>
+                                    <span>20€</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="workshop-item">
-                    <h4>Creación con Arcilla</h4>
-                    <p>Modela y da forma a la arcilla para crear piezas únicas que luego podrás pintar y llevar a casa.</p>
-                    <div class="workshop-meta">
-                        <span>Viernes 18:00-20:00</span>
-                        <span>30€</span>
-                    </div>
-                </div>
-                <div class="workshop-item">
-                    <h4>Arte Reciclado</h4>
-                    <p>Aprende a transformar materiales cotidianos en obras de arte originales y respetuosas con el medio ambiente.</p>
-                    <div class="workshop-meta">
-                        <span>Viernes 18:00-20:00</span>
-                        <span>20€</span>
-                    </div>
+                    <button class="carousel-btn next" id="workshopNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1562,29 +1753,41 @@
                 <a href="reservas.html" class="btn">Reserva tu evento</a>
             </div>
             <div class="events-list">
-                <div class="event-item">
-                    <h4>Cumpleaños Creativos</h4>
-                    <p>Celebra un cumpleaños único con una actividad artística adaptada a la edad de los participantes.</p>
-                    <div class="event-meta">
-                        <span>2 horas</span>
-                        <span>Desde 150€</span>
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="eventsPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="events-carousel">
+                        <div class="events-track" id="eventsTrack">
+                            <div class="event-item">
+                                <h4>Cumpleaños Creativos</h4>
+                                <p>Celebra un cumpleaños único con una actividad artística adaptada a la edad de los participantes.</p>
+                                <div class="event-meta">
+                                    <span>2 horas</span>
+                                    <span>Desde 150€</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <h4>Team Building</h4>
+                                <p>Actividades creativas para empresas que fomentan el trabajo en equipo y la innovación.</p>
+                                <div class="event-meta">
+                                    <span>2-3 horas</span>
+                                    <span>Consultar precio</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <h4>Celebraciones Familiares</h4>
+                                <p>Despedidas, babyshowers o reuniones familiares con un toque creativo y personalizado.</p>
+                                <div class="event-meta">
+                                    <span>2 horas</span>
+                                    <span>Desde 120€</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="event-item">
-                    <h4>Team Building</h4>
-                    <p>Actividades creativas para empresas que fomentan el trabajo en equipo y la innovación.</p>
-                    <div class="event-meta">
-                        <span>2-3 horas</span>
-                        <span>Consultar precio</span>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <h4>Celebraciones Familiares</h4>
-                    <p>Despedidas, babyshowers o reuniones familiares con un toque creativo y personalizado.</p>
-                    <div class="event-meta">
-                        <span>2 horas</span>
-                        <span>Desde 120€</span>
-                    </div>
+                    <button class="carousel-btn next" id="eventsNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1753,6 +1956,39 @@
                 inscriptionForm.reset();
             });
         }
+        
+        // Carousel functionality - Mejorado para mostrar solo un elemento a la vez
+        function initCarousel(prevBtnId, nextBtnId, trackId, itemCount) {
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            const track = document.getElementById(trackId);
+            let currentIndex = 0;
+            
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                updateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % itemCount;
+                updateCarousel();
+            });
+            
+            // Initialize
+            updateCarousel();
+        }
+        
+        // Initialize all carousels
+        document.addEventListener('DOMContentLoaded', () => {
+            initCarousel('teamPrev', 'teamNext', 'teamTrack', 2);
+            initCarousel('stagePrev', 'stageNext', 'stageTrack', 3);
+            initCarousel('workshopPrev', 'workshopNext', 'workshopTrack', 3);
+            initCarousel('eventsPrev', 'eventsNext', 'eventsTrack', 3);
+        });
     </script>
 </body>
 </html>
