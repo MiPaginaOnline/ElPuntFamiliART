@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Plaza - El Punt FamiliART</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa: #E8B4B8;
+            --rosa-claro: #F9E6E7;
+            --amarillo: #E8D3A2;
+            --amarillo-claro: #F5F0E1;
+            --blanco: #FFFFFF;
+            --texto: #4A4A4A;
+            --gris: #8A8A8A;
+            --borde: #E0E0E0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--texto);
+            background-color: var(--blanco);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+        
+        /* Header Sticky */
+        header {
+            background-color: var(--blanco);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 5%;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid var(--borde);
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--texto);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo-text span {
+            color: var(--rosa);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .nav-button {
+            background-color: var(--rosa);
+            color: var(--blanco);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+        }
+        
+        /* Contenido Reservas */
+        .reservas-page {
+            padding-top: 100px;
+            min-height: 100vh;
+            background-color: var(--blanco);
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 60px 5% 40px;
+            background-color: var(--amarillo-claro);
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--texto);
+        }
+        
+        .page-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gris);
+            font-size: 1.1rem;
+        }
+        
+        .reservas-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+        
+        .form-container {
+            background-color: var(--blanco);
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--borde);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--texto);
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--borde);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--rosa);
+            box-shadow: 0 0 0 2px rgba(232, 180, 184, 0.1);
+            outline: none;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--rosa);
+            color: var(--blanco);
+            padding: 14px 32px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+            transform: translateY(-2px);
+        }
+        
+        .btn-full {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--texto);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+        
+        .footer-about {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-about h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--rosa);
+        }
+        
+        .footer-about p {
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--amarillo);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--rosa);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Botón de WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+        
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .form-container {
+                padding: 25px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Sticky -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+                </div>
+                <div class="logo-text">El Punt Famili<span>ART</span></div>
+            </div>
+            <nav>
+                <a href="index.html" class="nav-button">Volver al Inicio</a>
+                <a href="noticias.html" class="nav-button">Noticias</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Reservas -->
+    <div class="reservas-page">
+        <div class="page-header">
+            <h1>Reservar Plaza</h1>
+            <p>Completa el formulario para reservar tu plaza en nuestras clases, talleres o eventos</p>
+        </div>
+        
+        <div class="reservas-container">
+            <div class="form-container">
+                <form id="reserva-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="participantes">Número de participantes</label>
+                            <input type="number" id="participantes" name="participantes" min="1" value="1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tipo-actividad">Tipo de actividad *</label>
+                        <select id="tipo-actividad" name="tipo-actividad" required>
+                            <option value="">Selecciona una opción</option>
+                            <option value="clase-infantil">Clase Infantil</option>
+                            <option value="clase-primaria">Clase Primaria</option>
+                            <option value="clase-adultos">Clase Adultos</option>
+                            <option value="taller-pintura">Taller de Pintura</option>
+                            <option value="taller-arcilla">Taller de Arcilla</option>
+                            <option value="taller-reciclado">Taller de Arte Reciclado</option>
+                            <option value="evento-cumpleanos">Evento Cumpleaños</option>
+                            <option value="evento-familiar">Evento Familiar</option>
+                            <option value="evento-empresa">Evento Empresa</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fecha-preferred">Fecha preferente</label>
+                        <input type="date" id="fecha-preferred" name="fecha-preferred">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="horario-preferred">Horario preferente</label>
+                        <select id="horario-preferred" name="horario-preferred">
+                            <option value="">Selecciona una opción</option>
+                            <option value="manana">Mañana (10:00-12:00)</option>
+                            <option value="tarde">Tarde (17:30-19:00)</option>
+                            <option value="tarde-tardia">Tarde tardía (19:00-21:00)</option>
+                            <option value="finde-manana">Fin de semana mañana (11:00-13:00)</option>
+                            <option value="finde-tarde">Fin de semana tarde (18:00-20:00)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje adicional</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Comentarios, preguntas o necesidades especiales..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-full">Enviar Solicitud de Reserva</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>El Punt FamiliART</h3>
+                <p>Un espacio creativo donde el arte, la creatividad y la comunidad se encuentran. Ofrecemos talleres y actividades para todas las edades.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html#quien-somos">Quiénes Somos</a></li>
+                    <li><a href="index.html#clases-regulares">Clases</a></li>
+                    <li><a href="index.html#talleres">Talleres</a></li>
+                    <li><a href="index.html#eventos">Eventos</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 El Punt FamiliART. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/34657917174" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Formulario de reserva
+        const reservaForm = document.getElementById('reserva-form');
+        
+        reservaForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Recoger datos del formulario
+            const formData = new FormData(reservaForm);
+            const nombre = formData.get('nombre');
+            const email = formData.get('email');
+            const telefono = formData.get('telefono');
+            const participantes = formData.get('participantes');
+            const tipoActividad = formData.get('tipo-actividad');
+            const fechaPreferred = formData.get('fecha-preferred');
+            const horarioPreferred = formData.get('horario-preferred');
+            const mensaje = formData.get('mensaje');
+            
+            // Crear mensaje para email
+            const emailSubject = `Solicitud de Reserva - ${nombre}`;
+            const emailBody = `Nombre: ${nombre}%0D%0AEmail: ${email}%0D%0ATeléfono: ${telefono}%0D%0AParticipantes: ${participantes}%0D%0AActividad: ${tipoActividad}%0D%0AFecha preferente: ${fechaPreferred}%0D%0AHorario preferente: ${horarioPreferred}%0D%0AMensaje: ${mensaje || 'Ninguno'}`;
+            
+            // Redirigir a email
+            window.open(`mailto:elpuntfamiliart@gmail.com?subject=${emailSubject}&body=${emailBody}`);
+            
+            // Resetear formulario
+            reservaForm.reset();
+            
+            // Mensaje de confirmación
+            alert('¡Gracias por tu solicitud! Se abrirá tu cliente de correo para que puedas enviarnos tu reserva.');
+        });
+    </script>
+</body>
+</html>
