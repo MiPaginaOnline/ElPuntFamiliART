@@ -45,7 +45,7 @@
             line-height: 1.3;
         }
         
-        /* Header - Mejorado con sticky permanente y efecto blur */
+        /* Header - Mejorado con sticky permanente, efecto blur y nombre del negocio */
         header {
             background-color: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
@@ -420,6 +420,8 @@
             position: relative;
             width: 100%;
             overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         
         .carousel-track {
@@ -429,18 +431,12 @@
         
         .team-member {
             background-color: var(--blanco);
-            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             max-width: 350px;
             transition: all 0.4s ease;
-            border: 1px solid var(--borde);
             flex: 0 0 100%;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
         }
         
         .member-img {
@@ -521,7 +517,27 @@
             right: -70px;
         }
         
-        /* Proyecto y Objetivos */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--borde);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .indicator.active {
+            background-color: var(--rosa);
+        }
+        
+        /* Proyecto y Objetivos - Imagen más pequeña */
         #proyecto-objetivos {
             background-color: var(--rosa-claro);
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8B4B8' stroke-width='2' opacity='0.1'/%3E%3Cpath d='M30,30 C50,10 70,10 90,30 C110,50 110,70 90,90 C70,110 50,110 30,90 C10,70 10,50 30,30 Z' fill='none' stroke='%23E8D3A2' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
@@ -545,7 +561,7 @@
             max-width: 100%;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            height: 300px;
+            height: 250px; /* Imagen más pequeña */
             object-fit: cover;
         }
         
@@ -586,7 +602,7 @@
             font-weight: bold;
         }
         
-        /* Clases Regulares */
+        /* Clases Regulares - Mejorado para mostrar una tarjeta completa por vez */
         #clases-regulares {
             background-color: var(--blanco);
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8D3A2' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
@@ -1106,7 +1122,7 @@
             background-color: #128C7E;
         }
         
-        /* Responsive */
+        /* Responsive - Mejorado para móvil */
         @media (max-width: 992px) {
             .hero {
                 flex-direction: column;
@@ -1181,6 +1197,8 @@
             
             .hamburger-menu {
                 display: flex;
+                order: 3; /* Mover a la derecha */
+                margin-left: auto; /* Empujar a la derecha */
             }
             
             .mobile-menu {
@@ -1224,6 +1242,7 @@
                 flex-direction: column;
                 gap: 15px;
                 margin-top: 20px;
+                align-items: flex-start; /* Centrado a la izquierda */
             }
             
             .mobile-nav-buttons .nav-button {
@@ -1231,23 +1250,35 @@
                 padding: 8px 15px;
             }
             
-            /* Ocultar logo con imagen en móvil */
-            .logo {
-                display: none;
+            /* Logo pequeño en móvil */
+            .logo-mobile {
+                display: flex;
+                align-items: center;
+                gap: 8px;
             }
             
-            /* Mostrar solo nombre del negocio en móvil */
-            .mobile-logo {
-                display: block;
-                text-align: center;
-                margin-bottom: 20px;
-                font-family: 'Playfair Display', serif;
-                font-size: 1.3rem;
+            .logo-mobile-icon {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 1px solid var(--borde);
+            }
+            
+            .logo-mobile-icon img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .logo-mobile-text {
+                font-size: 1.1rem;
                 font-weight: 700;
                 color: var(--texto);
+                font-family: 'Playfair Display', serif;
             }
             
-            .mobile-logo span {
+            .logo-mobile-text span {
                 color: var(--rosa);
             }
             
@@ -1304,6 +1335,11 @@
             
             .carousel-btn.next {
                 right: -50px;
+            }
+            
+            /* Imagen de proyecto más pequeña en móvil */
+            .project-image img {
+                height: 200px;
             }
         }
         
@@ -1385,6 +1421,54 @@
                 right: -20px;
             }
         }
+        
+        /* Versión escritorio - Eliminar estilo carrusel */
+        @media (min-width: 993px) {
+            .team-container {
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+            }
+            
+            .carousel-container {
+                overflow: visible;
+                width: auto;
+            }
+            
+            .carousel-track {
+                transform: none !important;
+                display: flex;
+                gap: 40px;
+            }
+            
+            .team-member {
+                flex: 0 0 auto;
+            }
+            
+            .carousel-btn {
+                display: none;
+            }
+            
+            .carousel-indicators {
+                display: none;
+            }
+            
+            /* Clases regulares - eliminar carrusel en escritorio */
+            .stage-carousel {
+                overflow: visible;
+            }
+            
+            .stage-track {
+                transform: none !important;
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+            }
+            
+            .stage-card {
+                flex: 0 0 auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1417,7 +1501,12 @@
             </nav>
         </div>
         <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-logo">El Punt Famili<span>ART</span></div>
+            <div class="logo-mobile">
+                <div class="logo-mobile-icon">
+                    <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+                </div>
+                <div class="logo-mobile-text">El Punt Famili<span>ART</span></div>
+            </div>
             <ul class="mobile-nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#quien-somos">Quiénes Somos</a></li>
@@ -1450,10 +1539,10 @@
         <div class="hero-images">
             <div class="image-collage">
                 <div class="collage-item">
-                    <img src="Captura de pantalla 2025-10-20 174521.png" alt="Arte infantil">
+                    <img src="Captura de pantalla 2025-10-23 210451.png" alt="Arte infantil">
                 </div>
                 <div class="collage-item">
-                    <img src="Captura de pantalla 2025-10-20 174540.png" alt="Taller de arte">
+                    <img src="Captura de pantalla 2025-10-23 210611.png" alt="Taller de arte">
                 </div>
                 <div class="collage-item">
                     <!-- IMAGEN ADICIONAL 1 -->
@@ -1511,6 +1600,10 @@
                     <button class="carousel-btn next" id="teamNext">
                         <i class="fas fa-chevron-right"></i>
                     </button>
+                    <div class="carousel-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1525,7 +1618,7 @@
         <div class="project-container">
             <div class="project-image">
                 <!-- IMAGEN REPRESENTATIVA DEL PROYECTO - CAMBIABLE DESDE LA APLICACIÓN -->
-                <img id="project-image" src="Captura de pantalla 2025-10-20 175523.png" alt="Nuestro espacio creativo">
+                <img id="project-image" src="Captura de pantalla 2025-10-23 210611.png" alt="Nuestro espacio creativo">
             </div>
             <div class="project-content">
                 <h3>Nuestro Proyecto</h3>
@@ -1544,7 +1637,7 @@
         </div>
     </section>
 
-    <!-- Clases Regulares -->
+    <!-- Clases Regulares - Mejorado para mostrar una tarjeta completa por vez -->
     <section id="clases-regulares">
         <div class="section-header">
             <h2>Clases Regulares</h2>
@@ -1587,6 +1680,11 @@
                     <button class="carousel-btn next" id="stageNext">
                         <i class="fas fa-chevron-right"></i>
                     </button>
+                    <div class="carousel-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                        <div class="indicator" data-index="2"></div>
+                    </div>
                 </div>
             </div>
             
@@ -1958,14 +2056,24 @@
         }
         
         // Carousel functionality - Mejorado para mostrar solo un elemento a la vez
-        function initCarousel(prevBtnId, nextBtnId, trackId, itemCount) {
+        function initCarousel(prevBtnId, nextBtnId, trackId, indicatorsSelector, itemCount) {
             const prevBtn = document.getElementById(prevBtnId);
             const nextBtn = document.getElementById(nextBtnId);
             const track = document.getElementById(trackId);
+            const indicators = document.querySelectorAll(indicatorsSelector);
             let currentIndex = 0;
             
             function updateCarousel() {
                 track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Actualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
             }
             
             prevBtn.addEventListener('click', () => {
@@ -1978,16 +2086,24 @@
                 updateCarousel();
             });
             
+            // Agregar eventos a los indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
             // Initialize
             updateCarousel();
         }
         
         // Initialize all carousels
         document.addEventListener('DOMContentLoaded', () => {
-            initCarousel('teamPrev', 'teamNext', 'teamTrack', 2);
-            initCarousel('stagePrev', 'stageNext', 'stageTrack', 3);
-            initCarousel('workshopPrev', 'workshopNext', 'workshopTrack', 3);
-            initCarousel('eventsPrev', 'eventsNext', 'eventsTrack', 3);
+            initCarousel('teamPrev', 'teamNext', 'teamTrack', '.team-section .indicator', 2);
+            initCarousel('stagePrev', 'stageNext', 'stageTrack', '#etapas .indicator', 3);
+            initCarousel('workshopPrev', 'workshopNext', 'workshopTrack', null, 3);
+            initCarousel('eventsPrev', 'eventsNext', 'eventsTrack', null, 3);
         });
     </script>
 </body>
