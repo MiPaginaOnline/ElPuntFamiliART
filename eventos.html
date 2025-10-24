@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - El Punt FamiliART</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa: #E8B4B8;
+            --rosa-claro: #F9E6E7;
+            --amarillo: #E8D3A2;
+            --amarillo-claro: #F5F0E1;
+            --blanco: #FFFFFF;
+            --texto: #4A4A4A;
+            --gris: #8A8A8A;
+            --borde: #E0E0E0;
+            --titulo-principal: #E8B4B8;
+            --titulo-secundario: #A67C52;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--texto);
+            background-color: var(--blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-3.134-3-3-3-3 3.134-3 3 3.134 3 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e8b4b8' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Header Sticky */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 5%;
+            transition: all 0.3s ease;
+            display: none; /* Oculto por defecto */
+        }
+        @media (max-width: 992px) {
+            header {
+                display: flex; /* Visible en móvil */
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo-sticky {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .logo-sticky img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid var(--borde);
+            }
+            .logo-sticky span {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--texto);
+                font-family: 'Playfair Display', serif;
+            }
+            .logo-sticky span span {
+                color: var(--rosa);
+            }
+            .hamburger-menu-sticky {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+            .bar {
+                width: 25px;
+                height: 2px;
+                background-color: var(--texto);
+                margin: 3px 0;
+                transition: 0.4s;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .mobile-menu.show {
+            display: flex;
+        }
+        .mobile-menu-content {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .mobile-menu-content ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .mobile-menu-content ul li {
+            margin: 15px 0;
+        }
+        .mobile-menu-content ul li a {
+            text-decoration: none;
+            color: var(--texto);
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-content ul li a:hover {
+            color: var(--rosa);
+        }
+        .mobile-menu-content .nav-button {
+            background-color: var(--rosa);
+            color: var(--blanco);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .mobile-menu-content .nav-button:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+        }
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--texto);
+            cursor: pointer;
+        }
+
+        /* Secciones */
+        section {
+            padding: 120px 5% 60px; /* Ajustado para header sticky */
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 3.2rem;
+            color: var(--titulo-principal);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--rosa), var(--amarillo));
+        }
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gris);
+            font-size: 1.1rem;
+        }
+
+        /* Eventos */
+        #eventos {
+            background-color: var(--blanco);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8B4B8' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 170px;
+        }
+        .events-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: flex-start;
+            position: relative;
+        }
+        .events-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .events-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .events-info p {
+            margin-bottom: 20px;
+            color: var(--texto);
+        }
+        .events-list {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        .events-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .events-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .event-item {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--borde);
+            flex: 0 0 100%;
+        }
+        .event-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        .event-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .event-item p {
+            color: var(--gris);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        .event-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--rosa);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--texto);
+            color: white;
+            padding: 40px 5% 20px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+        .footer-about {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-about h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--rosa);
+        }
+        .footer-about p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        .footer-links {
+            flex: 1;
+            min-width: 180px;
+        }
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--amarillo);
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .footer-links ul li a:hover {
+            color: var(--rosa);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        /* Botón de WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            section {
+                padding: 100px 5% 60px; /* Ajustado */
+            }
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            .section-header p {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            .events-container {
+                flex-direction: column;
+            }
+            .events-info, .events-list {
+                width: 100%;
+            }
+        }
+        @media (max-width: 576px) {
+            .section-header h2 {
+                font-size: 1.9rem;
+            }
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+        /* Versión escritorio - Eliminar estilo carrusel */
+        @media (min-width: 993px) {
+            .events-carousel {
+                overflow: visible;
+            }
+            .events-track {
+                transform: none !important;
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+            }
+            .event-item {
+                flex: 0 0 auto;
+                max-width: 350px; /* Ajuste para escritorio */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Sticky (Solo en móvil) -->
+    <header>
+        <div class="logo-sticky">
+            <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+            <span>El Punt Famili<span>ART</span></span>
+        </div>
+        <div class="hamburger-menu-sticky" id="hamburgerMenuSticky">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <span class="close-menu" id="closeMenu">&times;</span>
+            <div class="logo-sticky">
+                <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+                <span>El Punt Famili<span>ART</span></span>
+            </div>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#quien-somos">Quiénes Somos</a></li>
+                <li><a href="index.html#proyecto-objetivos">Proyecto</a></li>
+                <li><a href="clases.html">Clases</a></li>
+                <li><a href="talleres.html">Talleres</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a href="reservas.html" class="nav-button">Reservar Plaza</a>
+            <a href="noticias.html" class="nav-button">Noticias</a>
+        </div>
+    </div>
+
+    <!-- Eventos -->
+    <section id="eventos">
+        <div class="section-header">
+            <h2>Eventos</h2>
+            <p>Celebra tus momentos especiales con nosotros</p>
+        </div>
+        <div class="events-container">
+            <div class="events-info">
+                <h3>Información de Eventos</h3>
+                <p>Ofrecemos nuestro espacio para celebrar eventos privados como cumpleaños, despedidas, babyshowers, team building y otras ocasiones especiales. Adaptamos la actividad creativa a la temática de tu evento.</p>
+                <p><strong>Horario disponible:</strong> Sábados de 11:00h a 13:00h y de 18:00h a 20:00h</p>
+                <p>Incluimos todos los materiales necesarios y la guía de nuestros profesionales para que tu evento sea único y memorable.</p>
+                <a href="reservas.html" class="btn">Reserva tu evento</a>
+            </div>
+            <div class="events-list">
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="eventsPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="events-carousel">
+                        <div class="events-track" id="eventsTrack">
+                            <div class="event-item">
+                                <h4>Cumpleaños Creativos</h4>
+                                <p>Celebra un cumpleaños único con una actividad artística adaptada a la edad de los participantes.</p>
+                                <div class="event-meta">
+                                    <span>2 horas</span>
+                                    <span>Desde 150€</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <h4>Team Building</h4>
+                                <p>Actividades creativas para empresas que fomentan el trabajo en equipo y la innovación.</p>
+                                <div class="event-meta">
+                                    <span>2-3 horas</span>
+                                    <span>Consultar precio</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <h4>Celebraciones Familiares</h4>
+                                <p>Despedidas, babyshowers o reuniones familiares con un toque creativo y personalizado.</p>
+                                <div class="event-meta">
+                                    <span>2 horas</span>
+                                    <span>Desde 120€</span>
+                                </div>
+                            </div>
+                             <div class="event-item">
+                                <h4>Despedidas de Soltero/a</h4>
+                                <p>Un taller especial para celebrar la despedida con una actividad divertida y original.</p>
+                                <div class="event-meta">
+                                    <span>2 horas</span>
+                                    <span>Desde 180€</span>
+                                </div>
+                            </div>
+                             <div class="event-item">
+                                <h4>Workshop Empresarial</h4>
+                                <p>Un taller de arte como herramienta de desarrollo personal y creatividad para tu equipo.</p>
+                                <div class="event-meta">
+                                    <span>3 horas</span>
+                                    <span>Consultar precio</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="eventsNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>El Punt FamiliART</h3>
+                <p>Un espacio creativo donde el arte, la creatividad y la comunidad se encuentran. Ofrecemos talleres y actividades para todas las edades.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html#quien-somos">Quiénes Somos</a></li>
+                    <li><a href="index.html#proyecto-objetivos">Proyecto y Objetivos</a></li>
+                    <li><a href="clases.html">Clases Regulares</a></li>
+                    <li><a href="talleres.html">Talleres</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="reservas.html">Reservar Plaza</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 El Punt FamiliART. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/34657917174" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Menú Hamburguesa Sticky
+        const hamburgerMenuSticky = document.getElementById('hamburgerMenuSticky');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        hamburgerMenuSticky.addEventListener('click', () => {
+            mobileMenu.classList.add('show');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('show');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const mobileNavLinks = document.querySelectorAll('.mobile-menu-content ul li a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+            });
+        });
+
+        // Carousel functionality - Mejorado para mostrar solo un elemento a la vez
+        function initCarousel(prevBtnId, nextBtnId, trackId, indicatorsSelector, itemCount) {
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            const track = document.getElementById(trackId);
+            const indicators = document.querySelectorAll(indicatorsSelector);
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                // Actualizar indicadores
+                if (indicators) {
+                    indicators.forEach((indicator, index) => {
+                        if (index === currentIndex) {
+                            indicator.classList.add('active');
+                        } else {
+                            indicator.classList.remove('active');
+                        }
+                    });
+                }
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                    updateCarousel();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % itemCount;
+                    updateCarousel();
+                });
+            }
+            // Agregar eventos a los indicadores
+            if (indicators) {
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateCarousel();
+                    });
+                });
+            }
+            // Initialize
+            updateCarousel();
+        }
+
+        // Initialize all carousels
+        document.addEventListener('DOMContentLoaded', () => {
+            initCarousel('eventsPrev', 'eventsNext', 'eventsTrack', null, 5); // No indicators for events
+        });
+    </script>
+</body>
+</html>
