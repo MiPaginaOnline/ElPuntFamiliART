@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiénes Somos - El Punt FamiliART</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rosa: #E8B4B8;
+            --rosa-claro: #F9E6E7;
+            --amarillo: #E8D3A2;
+            --amarillo-claro: #F5F0E1;
+            --blanco: #FFFFFF;
+            --texto: #4A4A4A;
+            --gris: #8A8A8A;
+            --borde: #E0E0E0;
+            --titulo-principal: #E8B4B8;
+            --titulo-secundario: #A67C52;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--texto);
+            background-color: var(--blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-3.134-3-3-3-3 3.134-3 3 3.134 3 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e8b4b8' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* Header Sticky */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 5%;
+            transition: all 0.3s ease;
+            display: none; /* Oculto por defecto */
+        }
+        @media (max-width: 992px) {
+            header {
+                display: flex; /* Visible en móvil */
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo-sticky {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .logo-sticky img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid var(--borde);
+            }
+            .logo-sticky span {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--texto);
+                font-family: 'Playfair Display', serif;
+            }
+            .logo-sticky span span {
+                color: var(--rosa);
+            }
+            .hamburger-menu-sticky {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+            .bar {
+                width: 25px;
+                height: 2px;
+                background-color: var(--texto);
+                margin: 3px 0;
+                transition: 0.4s;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .mobile-menu.show {
+            display: flex;
+        }
+        .mobile-menu-content {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .mobile-menu-content ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .mobile-menu-content ul li {
+            margin: 15px 0;
+        }
+        .mobile-menu-content ul li a {
+            text-decoration: none;
+            color: var(--texto);
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu-content ul li a:hover {
+            color: var(--rosa);
+        }
+        .mobile-menu-content .nav-button {
+            background-color: var(--rosa);
+            color: var(--blanco);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .mobile-menu-content .nav-button:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+        }
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--texto);
+            cursor: pointer;
+        }
+
+        /* Secciones */
+        section {
+            padding: 120px 5% 60px; /* Ajustado para header sticky */
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 3.2rem;
+            color: var(--titulo-principal);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--rosa), var(--amarillo));
+        }
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gris);
+            font-size: 1.1rem;
+        }
+
+        /* Quien Somos */
+        #quien-somos {
+            background-color: var(--blanco);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8B4B8' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .about-content {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+        .about-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--titulo-secundario);
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--texto);
+            font-size: 1.1rem;
+            text-align: left;
+            line-height: 1.8;
+        }
+        .team-section {
+            margin-top: 60px;
+        }
+        .team-section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--titulo-secundario);
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .team-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .team-member {
+            background-color: var(--blanco);
+            overflow: hidden;
+            max-width: 350px;
+            transition: all 0.4s ease;
+            flex: 0 0 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .member-img {
+            height: 300px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #adb5bd;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .member-img.eva {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                       url('Captura de pantalla 2025-10-20 174521.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .member-img.laura {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+                       url('Captura de pantalla 2025-10-20 174540.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .member-info {
+            padding: 25px;
+            text-align: center;
+        }
+        .member-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        .member-info p {
+            color: var(--gris);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--rosa);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .carousel-btn:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .carousel-btn.prev {
+            left: -70px;
+        }
+        .carousel-btn.next {
+            right: -70px;
+        }
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--borde);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .indicator.active {
+            background-color: var(--rosa);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--texto);
+            color: white;
+            padding: 40px 5% 20px;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+        .footer-about {
+            flex: 1;
+            min-width: 250px;
+        }
+        .footer-about h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--rosa);
+        }
+        .footer-about p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        .footer-links {
+            flex: 1;
+            min-width: 180px;
+        }
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--amarillo);
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links ul li {
+            margin-bottom: 8px;
+        }
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        .footer-links ul li a:hover {
+            color: var(--rosa);
+        }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        /* Botón de WhatsApp */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            section {
+                padding: 100px 5% 60px; /* Ajustado */
+            }
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            .section-header p {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .section-header h2 {
+                font-size: 1.9rem;
+            }
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+        /* Versión escritorio - Eliminar estilo carrusel */
+        @media (min-width: 993px) {
+            .team-container {
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+            }
+            .carousel-container {
+                overflow: visible;
+                width: auto;
+            }
+            .carousel-track {
+                transform: none !important;
+                display: flex;
+                gap: 40px;
+            }
+            .team-member {
+                flex: 0 0 auto;
+            }
+            .carousel-btn {
+                display: none;
+            }
+            .carousel-indicators {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Sticky (Solo en móvil) -->
+    <header>
+        <div class="logo-sticky">
+            <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+            <span>El Punt Famili<span>ART</span></span>
+        </div>
+        <div class="hamburger-menu-sticky" id="hamburgerMenuSticky">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <span class="close-menu" id="closeMenu">&times;</span>
+            <div class="logo-sticky">
+                <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+                <span>El Punt Famili<span>ART</span></span>
+            </div>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="index.html#proyecto-objetivos">Proyecto</a></li>
+                <li><a href="clases.html">Clases</a></li>
+                <li><a href="talleres.html">Talleres</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <a href="reservas.html" class="nav-button">Reservar Plaza</a>
+            <a href="noticias.html" class="nav-button">Noticias</a>
+        </div>
+    </div>
+
+    <!-- Quiénes Somos -->
+    <section id="quien-somos">
+        <div class="section-header">
+            <h2>Quiénes Somos</h2>
+            <p>Conoce nuestro equipo y nuestra historia</p>
+        </div>
+        <div class="about-container">
+            <div class="about-content">
+                <h3>Nuestra Historia</h3>
+                <p>El Punt FamiliART nació de la pasión por el arte y la educación, con el objetivo de crear un espacio donde la creatividad y la comunidad se encuentren. Un lugar para que niños, jóvenes y adultos puedan explorar, aprender, compartir y dejar que la imaginación florezca.</p>
+                <p>Es el inicio de una nueva etapa, hecha con cariño, raíces y mucha ilusión. Un espacio de creación y transformación donde el arte se convierte en una herramienta de expresión, crecimiento personal y conexión con los demás.</p>
+            </div>
+            <div class="team-section">
+                <h3>Nuestro Equipo</h3>
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="teamPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="teamTrack">
+                            <div class="team-member">
+                                <div class="member-img eva">
+                                    <!-- Imagen de Eva -->
+                                </div>
+                                <div class="member-info">
+                                    <h3>Eva</h3>
+                                    <p>Arteterapeuta y artista, con años de experiencia en educación artística. Mi pasión es acompañar procesos creativos y emocionales con sensibilidad y cuidado, creando espacios donde cada persona pueda expresarse con libertad.</p>
+                                </div>
+                            </div>
+                            <div class="team-member">
+                                <div class="member-img laura">
+                                    <!-- Imagen de Laura -->
+                                </div>
+                                <div class="member-info">
+                                    <h3>Laura</h3>
+                                    <p>Maestra de infantil y primaria, con experiencia en el mundo de la educación y un vínculo muy especial con los peques, a quienes me gusta acompañar desde la ternura, la cercanía y el juego.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="teamNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>El Punt FamiliART</h3>
+                <p>Un espacio creativo donde el arte, la creatividad y la comunidad se encuentran. Ofrecemos talleres y actividades para todas las edades.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                    <li><a href="index.html#proyecto-objetivos">Proyecto y Objetivos</a></li>
+                    <li><a href="clases.html">Clases Regulares</a></li>
+                    <li><a href="talleres.html">Talleres</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="reservas.html">Reservar Plaza</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 El Punt FamiliART. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón de WhatsApp -->
+    <a href="https://wa.me/34657917174" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Menú Hamburguesa Sticky
+        const hamburgerMenuSticky = document.getElementById('hamburgerMenuSticky');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        hamburgerMenuSticky.addEventListener('click', () => {
+            mobileMenu.classList.add('show');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('show');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const mobileNavLinks = document.querySelectorAll('.mobile-menu-content ul li a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+            });
+        });
+
+        // Carousel functionality - Mejorado para mostrar solo un elemento a la vez
+        function initCarousel(prevBtnId, nextBtnId, trackId, indicatorsSelector, itemCount) {
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            const track = document.getElementById(trackId);
+            const indicators = document.querySelectorAll(indicatorsSelector);
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                // Actualizar indicadores
+                if (indicators) {
+                    indicators.forEach((indicator, index) => {
+                        if (index === currentIndex) {
+                            indicator.classList.add('active');
+                        } else {
+                            indicator.classList.remove('active');
+                        }
+                    });
+                }
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                    updateCarousel();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentIndex = (currentIndex + 1) % itemCount;
+                    updateCarousel();
+                });
+            }
+            // Agregar eventos a los indicadores
+            if (indicators) {
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        currentIndex = index;
+                        updateCarousel();
+                    });
+                });
+            }
+            // Initialize
+            updateCarousel();
+        }
+
+        // Initialize all carousels
+        document.addEventListener('DOMContentLoaded', () => {
+            initCarousel('teamPrev', 'teamNext', 'teamTrack', '.team-section .indicator', 2);
+        });
+    </script>
+</body>
+</html>
