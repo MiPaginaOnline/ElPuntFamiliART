@@ -353,6 +353,29 @@
             color: var(--gris);
             font-size: 1.1rem;
         }
+        /* Enlace "Más información" */
+        .more-info-link {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: 600;
+            color: var(--rosa);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .more-info-link::after {
+            content: '→';
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        .more-info-link:hover {
+            color: var(--titulo-secundario);
+        }
+        .more-info-link:hover::after {
+            transform: translateX(5px);
+        }
         /* Quien Somos */
         #quien-somos {
             background-color: var(--blanco);
@@ -991,12 +1014,25 @@
             }
             .hero-content {
                 margin-bottom: 50px;
+                width: 100%;
             }
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 3.8rem;
+                text-align: center;
+                margin: 0 auto 20px;
+                background: linear-gradient(135deg, var(--rosa), var(--amarillo));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+                line-height: 1.1;
+                padding: 0 10px;
             }
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
+                text-align: center;
+                margin: 0 auto 30px;
+                max-width: 90%;
             }
             .hero-images {
                 position: relative;
@@ -1034,10 +1070,10 @@
                 transform: rotate(3deg);
             }
             .section-header h2 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             .section-header p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             .nav-links {
                 display: none;
@@ -1117,13 +1153,25 @@
                 height: 40px;
                 font-size: 1rem;
             }
+            
+            /* Botones más grandes en móvil */
+            .btn {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            /* Más información link en móvil */
+            .more-info-link {
+                font-size: 1.2rem;
+                margin-top: 50px;
+            }
         }
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 3.2rem;
             }
             .section-header h2 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             .tabs {
                 flex-direction: column;
@@ -1142,10 +1190,10 @@
         }
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2.3rem;
+                font-size: 2.8rem;
             }
             .section-header h2 {
-                font-size: 1.9rem;
+                font-size: 2.2rem;
             }
             .btn-container {
                 display: flex;
@@ -1161,6 +1209,17 @@
             .logo-icon {
                 width: 40px;
                 height: 40px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .section-header h2 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -1286,6 +1345,7 @@
                     </div>
                 </div>
             </div>
+            <a href="quienes-somos.html" class="more-info-link">Más información</a>
         </div>
     </section>
     <!-- Proyecto y Objetivos -->
@@ -1306,7 +1366,10 @@
                     <li>Fomentar la expresión creativa en todas las edades</li>
                     <li>Crear un espacio seguro para la exploración artística</li>
                     <li>Promover la conexión comunitaria a través del arte</li>
+                    <li>Desarrollar habilidades artísticas y de pensamiento creativo</li>
+                    <li>Ofrecer herramientas para el bienestar emocional a través del arte</li>
                 </ul>
+                <a href="proyecto-objetivos.html" class="more-info-link">Más información</a>
             </div>
         </div>
     </section>
@@ -1443,6 +1506,7 @@
                     </form>
                 </div>
             </div>
+            <a href="clases-regulares.html" class="more-info-link">Más información</a>
         </div>
     </section>
     <!-- Talleres -->
@@ -1497,6 +1561,7 @@
                     </div>
                 </div>
             </div>
+            <a href="talleres.html" class="more-info-link">Más información</a>
         </div>
     </section>
     <!-- Eventos -->
@@ -1551,6 +1616,7 @@
                     </div>
                 </div>
             </div>
+            <a href="eventos.html" class="more-info-link">Más información</a>
         </div>
     </section>
     <!-- Contacto -->
@@ -1601,6 +1667,7 @@
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11977.100985472844!2d1.2001968999999999!3d41.144490350000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a02e604f33d7b3%3A0x867332d75a1372b6!2sCarrer%20Vint-I-Dos%2C%2070%2C%2043100%20Tarragona!5e0!3m2!1ses!2ses!4v1699920000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
             </div>
+            <a href="contacto.html" class="more-info-link">Más información</a>
         </div>
     </section>
     <!-- Footer -->
