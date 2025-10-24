@@ -5,273 +5,345 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El Punt FamiliART - Taller de Arte y Creatividad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #FF9E6D; /* Coral suave */
-            --secondary: #8AC6D1; /* Azul pálido */
-            --accent: #FFD166; /* Amarillo suave */
-            --dark: #2A2D34; /* Gris oscuro */
-            --light: #FDF6E3; /* Beige claro */
-            --text: #5D4037; /* Marrón oscuro */
-            --frame: #E8D8C8; /* Marrón claro */
-            --bg-light: #FFFFFF; /* Blanco puro */
-            --bg-soft: #FFF8F0; /* Fondo suave */
+            --rosa: #E8B4B8;
+            --rosa-claro: #F9E6E7;
+            --amarillo: #E8D3A2;
+            --amarillo-claro: #F5F0E1;
+            --blanco: #FFFFFF;
+            --texto: #4A4A4A;
+            --gris: #8A8A8A;
+            --borde: #E0E0E0;
+            --titulo-principal: #E8B4B8;
+            --titulo-secundario: #A67C52;
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text);
-            background-color: var(--bg-light);
-            line-height: 1.6;
-            padding-top: 60px; /* Espacio para el sticky menu */
-            background-image: 
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="5" fill="%23FF9E6D" opacity="0.1"/><circle cx="80" cy="80" r="7" fill="%238AC6D1" opacity="0.1"/><path d="M40,30 Q60,10 80,30 T100,70" stroke="%23FFD166" stroke-width="1" fill="none" opacity="0.1"/></svg>'),
-                url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><rect x="50" y="50" width="20" height="20" fill="%23FF9E6D" opacity="0.05" transform="rotate(45 60 60)"/><rect x="150" y="150" width="25" height="25" fill="%238AC6D1" opacity="0.05" transform="rotate(30 162.5 162.5)"/></svg>');
-            background-attachment: fixed;
+        
+        html {
+            scroll-behavior: smooth;
         }
-
-        /* Sticky Menu */
-        .sticky-menu {
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--texto);
+            background-color: var(--blanco);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e8b4b8' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        /* Header - SOLO UN HEADER STICKY */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            width: 100%;
             position: fixed;
             top: 0;
-            left: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
             z-index: 1000;
-            backdrop-filter: blur(5px);
-            border-bottom: 3px solid var(--primary);
-            padding: 10px 5%;
+            padding: 15px 5%;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 60px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
-
-        .logo-container {
+        
+        .logo {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-
-        .logo-img {
-            width: 40px;
-            height: 40px;
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             overflow: hidden;
-            border: 2px solid var(--accent);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid var(--borde);
         }
-
-        .logo-img img {
+        
+        .logo-icon img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
+        
         .logo-text {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--texto);
             font-family: 'Playfair Display', serif;
         }
-
+        
         .logo-text span {
-            color: var(--primary);
+            color: var(--rosa);
         }
-
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--dark);
-        }
-
-        .menu-items {
+        
+        nav {
             display: flex;
+            align-items: center;
             gap: 20px;
         }
-
-        .menu-items a {
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin-right: 20px;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--texto);
             font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
             position: relative;
-            font-size: 0.9rem;
         }
-
-        .menu-items a:hover {
-            color: var(--primary);
+        
+        .nav-links a:hover {
+            color: var(--rosa);
         }
-
-        .menu-items a::after {
+        
+        .nav-links a::after {
             content: '';
             position: absolute;
             bottom: -5px;
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--primary);
+            background-color: var(--rosa);
             transition: width 0.3s ease;
         }
-
-        .menu-items a:hover::after {
+        
+        .nav-links a:hover::after {
             width: 100%;
         }
-
-        /* Hero Section */
+        
+        .nav-button {
+            background-color: var(--rosa);
+            color: var(--blanco);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .nav-button:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+        }
+        
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+        }
+        
+        .bar {
+            width: 25px;
+            height: 2px;
+            background-color: var(--texto);
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+        
+        /* Hero Section - Ajustado para header sticky */
         .hero {
-            height: 85vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
+            padding: 120px 5% 50px;
             position: relative;
-            background-image: 
-                linear-gradient(135deg, rgba(255, 158, 109, 0.1) 0%, rgba(138, 198, 209, 0.1) 100%),
-                url('https://placehold.co/1200x800/FF9E6D/FFFFFF/?text=Arte+Moderno');
-            background-size: cover;
-            background-position: center;
-            color: white;
             overflow: hidden;
+            background-color: var(--blanco);
+            background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8B4B8' stroke-width='2' opacity='0.2'/%3E%3Cpath d='M30,30 C50,10 70,10 90,30 C110,50 110,70 90,90 C70,110 50,110 30,90 C10,70 10,50 30,30 Z' fill='none' stroke='%23E8D3A2' stroke-width='2' opacity='0.2'/%3E%3C/svg%3E");
+            background-size: cover;
         }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255, 209, 102, 0.1) 0%, transparent 25%),
-                radial-gradient(circle at 80% 70%, rgba(138, 198, 209, 0.1) 0%, transparent 25%),
-                url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><path d="M50,50 Q100,10 150,50 T200,150" stroke="%23FF9E6D" stroke-width="2" fill="none" opacity="0.1"/><circle cx="100" cy="100" r="30" stroke="%238AC6D1" stroke-width="2" fill="none" opacity="0.1"/></svg>');
-            background-size: 300px;
-            z-index: -1;
-        }
-
+        
         .hero-content {
             max-width: 600px;
-            margin-left: 5%;
-            z-index: 1;
+            z-index: 2;
         }
-
+        
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 4.5rem;
             margin-bottom: 20px;
-            line-height: 1.2;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            font-weight: 700;
-            font-family: 'Playfair Display', serif;
-            color: var(--dark);
+            color: var(--titulo-principal);
+            position: relative;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            line-height: 1.1;
         }
-
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--rosa), var(--amarillo));
+        }
+        
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            font-weight: 500;
-            color: var(--text);
+            color: var(--gris);
+            max-width: 500px;
         }
-
+        
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background-color: var(--rosa);
+            color: var(--blanco);
+            padding: 12px 25px;
+            border-radius: 4px;
             text-decoration: none;
-            border-radius: 30px;
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 2px solid white;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 0.95rem;
+            cursor: pointer;
+            letter-spacing: 0.5px;
         }
-
+        
         .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            background-color: var(--amarillo);
+            color: var(--texto);
+            transform: translateY(-2px);
         }
-
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--rosa);
+            color: var(--rosa);
+            margin-left: 10px;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--rosa);
+            color: var(--blanco);
+        }
+        
+        .contact-message {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: var(--gris);
+        }
+        
         .hero-images {
             position: absolute;
             right: 5%;
             top: 50%;
             transform: translateY(-50%);
+            width: 45%;
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-width: 400px;
+            justify-content: flex-end;
         }
-
-        .hero-img {
+        
+        .image-collage {
+            display: flex;
+            flex-wrap: wrap;
             width: 100%;
-            border-radius: 15px;
+            max-width: 500px;
+            gap: 15px;
+        }
+        
+        .collage-item {
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border: 2px solid var(--frame);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+            border: 5px solid var(--blanco);
         }
-
-        .hero-img img {
+        
+        .collage-item:hover {
+            transform: rotate(2deg) scale(1.05);
+        }
+        
+        .collage-item img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
         }
-
-        /* Secciones Generales */
+        
+        .collage-item:nth-child(1) {
+            width: 60%;
+            height: 250px;
+            transform: rotate(-3deg);
+        }
+        
+        .collage-item:nth-child(2) {
+            width: 35%;
+            height: 250px;
+            transform: rotate(2deg);
+        }
+        
+        .collage-item:nth-child(3) {
+            width: 35%;
+            height: 200px;
+            margin-top: -50px;
+            transform: rotate(-2deg);
+        }
+        
+        .collage-item:nth-child(4) {
+            width: 60%;
+            height: 200px;
+            margin-top: -50px;
+            transform: rotate(3deg);
+        }
+        
+        /* Secciones - Ajustadas para header sticky */
         section {
             padding: 100px 5%;
-            position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
         }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            padding: 50px;
-            position: relative;
-            border: 3px solid var(--frame);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .section-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-        }
-
+        
         .section-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
-
+        
         .section-header h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
+            font-size: 3.2rem;
+            color: var(--titulo-principal);
             margin-bottom: 15px;
-            font-family: 'Playfair Display', serif;
             position: relative;
             display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
-
+        
         .section-header h2::after {
             content: '';
             position: absolute;
@@ -280,632 +352,1427 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 2px;
+            background: linear-gradient(to right, var(--rosa), var(--amarillo));
         }
-
+        
         .section-header p {
-            font-size: 1.2rem;
-            color: #666;
-            margin-top: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gris);
+            font-size: 1.1rem;
         }
-
-        /* Carrusel */
-        .carousel-container {
-            position: relative;
+        
+        /* Quien Somos */
+        #quien-somos {
+            background-color: var(--blanco);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8B4B8' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+        
+        .about-container {
             max-width: 1000px;
             margin: 0 auto;
+        }
+        
+        .about-content {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+        
+        .about-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--titulo-secundario);
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: var(--texto);
+            font-size: 1.1rem;
+            text-align: left;
+            line-height: 1.8;
+        }
+        
+        .team-section {
+            margin-top: 60px;
+        }
+        
+        .team-section h3 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--titulo-secundario);
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .team-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
             overflow: hidden;
             border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
-
-        .carousel {
+        
+        .carousel-track {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s ease;
         }
-
-        .carousel-item {
-            min-width: 100%;
-            padding: 20px;
+        
+        .team-member {
+            background-color: var(--blanco);
+            overflow: hidden;
+            max-width: 350px;
+            transition: all 0.4s ease;
+            flex: 0 0 100%;
+            display: flex;
+            flex-direction: column;
         }
-
+        
+        .member-img {
+            height: 300px;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #adb5bd;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member-img.eva {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
+                       url('Captura de pantalla 2025-10-20 174521.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .member-img.laura {
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), 
+                       url('Captura de pantalla 2025-10-20 174540.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .member-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .member-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .member-info p {
+            color: var(--gris);
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.8);
+            background-color: var(--rosa);
+            color: white;
             border: none;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: var(--dark);
-            transition: all 0.3s ease;
+            font-size: 1.5rem;
             z-index: 10;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
-
+        
         .carousel-btn:hover {
-            background: var(--primary);
-            color: white;
+            background-color: var(--amarillo);
+            color: var(--texto);
+            transform: translateY(-50%) scale(1.1);
         }
-
+        
         .carousel-btn.prev {
-            left: 15px;
+            left: -70px;
         }
-
+        
         .carousel-btn.next {
-            right: 15px;
+            right: -70px;
         }
-
-        /* Cards */
-        .card {
-            background: var(--bg-soft);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
         }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            color: var(--dark);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .card p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Quiénes Somos */
-        .team-card {
-            text-align: center;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            border: 2px solid var(--frame);
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .team-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .team-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-        }
-
-        .team-image {
-            width: 140px;
-            height: 140px;
+        
+        .indicator {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            overflow: hidden;
-            margin: 0 auto 18px;
-            border: 4px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: var(--borde);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-
-        .team-image img {
-            width: 100%;
-            height: 100%;
+        
+        .indicator.active {
+            background-color: var(--rosa);
+        }
+        
+        /* Proyecto y Objetivos - Imagen más pequeña */
+        #proyecto-objetivos {
+            background-color: var(--rosa-claro);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8B4B8' stroke-width='2' opacity='0.1'/%3E%3Cpath d='M30,30 C50,10 70,10 90,30 C110,50 110,70 90,90 C70,110 50,110 30,90 C10,70 10,50 30,30 Z' fill='none' stroke='%23E8D3A2' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 150px;
+        }
+        
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .project-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .project-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 250px;
             object-fit: cover;
         }
-
-        .team-name {
-            font-size: 1.4rem;
-            color: var(--dark);
-            margin-bottom: 8px;
-            font-family: 'Playfair Display', serif;
+        
+        .project-content {
+            flex: 1;
+            min-width: 300px;
         }
-
-        .team-role {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 12px;
-            font-style: italic;
-            font-size: 0.95rem;
+        
+        .project-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
-
-        .team-description p {
-            font-size: 1rem;
-            color: #666;
-            line-height: 1.6;
+        
+        .project-content p {
+            margin-bottom: 20px;
+            color: var(--texto);
         }
-
-        .history-section {
-            margin-top: 40px;
-            padding: 30px;
-            background: var(--bg-soft);
-            border-radius: 15px;
-            text-align: center;
+        
+        .objectives-list {
+            list-style: none;
+            margin-top: 30px;
         }
-
-        .history-section h3 {
-            color: var(--dark);
+        
+        .objectives-list li {
             margin-bottom: 15px;
-            font-size: 1.5rem;
-            font-family: 'Playfair Display', serif;
+            padding-left: 30px;
+            position: relative;
         }
-
-        /* Talleres */
-        .workshop-card {
-            background-color: var(--bg-soft);
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--primary);
+        
+        .objectives-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--rosa);
+            font-weight: bold;
+        }
+        
+        /* Clases Regulares - Mejorado para mostrar una tarjeta completa por vez */
+        #clases-regulares {
+            background-color: var(--blanco);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8D3A2' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 180px;
+        }
+        
+        .tabs-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--borde);
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gris);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .tab.active {
+            color: var(--rosa);
+        }
+        
+        .tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--rosa);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .stage-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .stage-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .stage-card {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            max-width: 300px;
+            text-align: center;
             transition: all 0.4s ease;
-            opacity: 0;
-            transform: translateX(-15px);
+            border: 1px solid var(--borde);
+            flex: 0 0 100%;
+            margin: 0 auto;
         }
-
-        .workshop-card.visible {
-            opacity: 1;
-            transform: translateX(0);
+        
+        .stage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
         }
-
-        .workshop-card:hover {
-            transform: translateX(8px);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        
+        .stage-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
-
-        .workshop-card h3 {
-            color: var(--dark);
-            margin-bottom: 8px;
-            font-size: 1.2rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .workshop-card p {
-            color: #666;
-            margin-bottom: 12px;
+        
+        .stage-card p {
+            color: var(--gris);
+            margin-bottom: 20px;
             font-size: 0.95rem;
         }
-
-        .workshop-ages {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 18px;
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            background-color: var(--blanco);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .schedule-table th, .schedule-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--borde);
+        }
+        
+        .schedule-table th {
+            background-color: var(--rosa-claro);
+            color: var(--texto);
             font-weight: 600;
-            font-size: 0.85rem;
         }
-
-        .workshop-schedule {
+        
+        .schedule-table tr:hover {
+            background-color: rgba(232, 180, 184, 0.05);
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--blanco);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--borde);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
             display: block;
-            margin-top: 10px;
-            color: #666;
-            font-style: italic;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--texto);
         }
-
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--borde);
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--rosa);
+            box-shadow: 0 0 0 2px rgba(232, 180, 184, 0.1);
+            outline: none;
+        }
+        
+        /* Talleres */
+        #talleres {
+            background-color: var(--amarillo-claro);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8D3A2' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 160px;
+        }
+        
+        .workshop-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: flex-start;
+            position: relative;
+        }
+        
+        .workshop-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .workshop-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .workshop-info p {
+            margin-bottom: 20px;
+            color: var(--texto);
+        }
+        
+        .workshop-list {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .workshop-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .workshop-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .workshop-item {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--borde);
+            flex: 0 0 100%;
+        }
+        
+        .workshop-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .workshop-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .workshop-item p {
+            color: var(--gris);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .workshop-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--rosa);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        /* Eventos */
+        #eventos {
+            background-color: var(--blanco);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8B4B8' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 170px;
+        }
+        
+        .events-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: flex-start;
+            position: relative;
+        }
+        
+        .events-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .events-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .events-info p {
+            margin-bottom: 20px;
+            color: var(--texto);
+        }
+        
+        .events-list {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .events-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .events-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .event-item {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--borde);
+            flex: 0 0 100%;
+        }
+        
+        .event-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .event-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--titulo-secundario);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .event-item p {
+            color: var(--gris);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        
+        .event-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--rosa);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
         /* Contacto */
+        #contacto {
+            background-color: var(--rosa-claro);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8B4B8' stroke-width='2' opacity='0.1'/%3E%3Cpath d='M30,30 C50,10 70,10 90,30 C110,50 110,70 90,90 C70,110 50,110 30,90 C10,70 10,50 30,30 Z' fill='none' stroke='%23E8D3A2' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 150px;
+        }
+        
         .contact-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px;
+            gap: 50px;
         }
-
+        
         .contact-info {
             flex: 1;
             min-width: 300px;
         }
-
+        
         .contact-item {
             display: flex;
-            align-items: flex-start;
-            margin-bottom: 25px;
-            transition: all 0.4s ease;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
-
+        
         .contact-item:hover {
-            transform: translateX(8px);
+            background-color: rgba(232, 180, 184, 0.05);
         }
-
+        
         .contact-icon {
             width: 50px;
             height: 50px;
-            background-color: var(--primary);
+            background-color: var(--rosa);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 18px;
+            margin-right: 20px;
             color: white;
-            font-size: 1.3rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
-
+        
         .contact-item:hover .contact-icon {
-            background-color: var(--secondary);
-            transform: scale(1.1) rotate(10deg);
+            background-color: var(--amarillo);
+            transform: scale(1.1);
         }
-
+        
         .contact-details h3 {
             font-size: 1.2rem;
-            margin-bottom: 4px;
-            color: var(--dark);
-            font-family: 'Playfair Display', serif;
+            margin-bottom: 5px;
+            color: var(--texto);
         }
-
+        
         .contact-details p, .contact-details a {
-            color: #666;
+            color: var(--gris);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
-
+        
         .contact-details a:hover {
-            color: var(--primary);
+            color: var(--rosa);
         }
-
+        
         .map-container {
             flex: 1;
             min-width: 300px;
-            height: 280px;
-            border-radius: 12px;
+            height: 400px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            border: 2px solid var(--frame);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
-
+        
         .map-container iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-
+        
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--texto);
             color: white;
-            padding: 40px 5% 15px;
-            margin-top: 40px;
+            padding: 60px 5% 30px;
         }
-
+        
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 18px;
-            color: white;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .footer-logo span {
-            color: var(--primary);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 25px;
-            margin-bottom: 25px;
+            justify-content: space-between;
             flex-wrap: wrap;
-            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
         }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        
+        .footer-about {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .footer-about h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--rosa);
+        }
+        
+        .footer-about p {
+            color: #ccc;
             font-size: 0.95rem;
         }
-
-        .footer-links a:hover {
-            color: var(--primary);
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
         }
-
-        .social-links {
-            display: flex;
-            gap: 18px;
-            margin-bottom: 25px;
+        
+        .footer-links h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--amarillo);
         }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            border-radius: 50%;
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links ul li a {
+            color: #ccc;
+            text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
-
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-5px);
+        
+        .footer-links ul li a:hover {
+            color: var(--rosa);
         }
-
+        
         .footer-bottom {
-            padding-top: 18px;
+            text-align: center;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #aaa;
+            font-size: 0.9rem;
         }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-        }
-
+        
         /* Botón de WhatsApp */
         .whatsapp-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 25px;
+            right: 25px;
             background-color: #25D366;
             color: white;
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             transition: all 0.4s ease;
             text-decoration: none;
-            border: 2px solid white;
         }
-
+        
         .whatsapp-btn:hover {
             transform: scale(1.1);
             background-color: #128C7E;
         }
-
-        /* Responsive */
+        
+        /* Responsive - Mejorado para móvil */
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 2.4rem;
-            }
-
-            .section-header h2 {
-                font-size: 2.2rem;
-            }
-
-            .section-container {
-                padding: 35px 25px;
-            }
-        }
-
-        @media (max-width: 768px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
-                height: auto;
-                padding: 80px 0 40px;
+                padding-top: 100px;
             }
-
+            
             .hero-content {
-                margin-left: 0;
-                margin-top: 40px;
+                margin-bottom: 50px;
             }
-
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
             .hero-images {
-                position: static;
+                position: relative;
+                right: auto;
+                top: auto;
                 transform: none;
-                max-width: 100%;
-                margin: 0 5%;
+                width: 100%;
+                justify-content: center;
                 margin-top: 30px;
             }
-
-            .menu-toggle {
-                display: block;
+            
+            .image-collage {
+                max-width: 500px;
+                gap: 10px;
             }
-
-            .menu-items {
+            
+            .collage-item:nth-child(1) {
+                width: 60%;
+                height: 200px;
+                transform: rotate(-3deg);
+            }
+            
+            .collage-item:nth-child(2) {
+                width: 35%;
+                height: 200px;
+                transform: rotate(2deg);
+            }
+            
+            .collage-item:nth-child(3) {
+                width: 35%;
+                height: 150px;
+                margin-top: -30px;
+                transform: rotate(-2deg);
+            }
+            
+            .collage-item:nth-child(4) {
+                width: 60%;
+                height: 150px;
+                margin-top: -30px;
+                transform: rotate(3deg);
+            }
+            
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-header p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger-menu {
+                display: flex;
+                order: 3;
+                margin-left: auto;
+            }
+            
+            .mobile-menu {
                 display: none;
                 position: absolute;
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-                border-radius: 0 0 0 15px;
-                border-left: 3px solid var(--primary);
-                border-bottom: 3px solid var(--primary);
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
                 z-index: 999;
+                padding: 20px;
             }
-
-            .menu-items.show {
+            
+            .mobile-menu.show {
+                display: block;
+            }
+            
+            .mobile-nav-links {
+                list-style: none;
+            }
+            
+            .mobile-nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-nav-links a {
+                text-decoration: none;
+                color: var(--texto);
+                font-weight: 500;
+                font-size: 0.85rem;
+                display: block;
+                padding: 8px 0;
+                border-bottom: 1px solid var(--borde);
+            }
+            
+            .mobile-nav-buttons {
                 display: flex;
-                animation: slideDown 0.4s ease;
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 20px;
+                align-items: flex-start;
             }
-
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-10px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+            
+            .mobile-nav-buttons .nav-button {
+                font-size: 0.8rem;
+                padding: 8px 15px;
             }
-
-            .menu-items a {
-                padding: 10px 0;
-                border-bottom: 1px solid #eee;
+            
+            /* Logo pequeño en móvil */
+            .logo-mobile {
+                display: flex;
+                align-items: center;
+                gap: 8px;
             }
-
-            .menu-items a:last-child {
-                border-bottom: none;
+            
+            .logo-mobile-icon {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                overflow: hidden;
+                border: 1px solid var(--borde);
             }
-
-            .section-container {
-                padding: 30px 20px;
+            
+            .logo-mobile-icon img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            .logo-mobile-text {
+                font-size: 1.1rem;
+                font-weight: 700;
+                color: var(--texto);
+                font-family: 'Playfair Display', serif;
+            }
+            
+            .logo-mobile-text span {
+                color: var(--rosa);
+            }
+            
+            /* Mejoras para móvil */
+            section {
+                padding: 80px 5% 60px;
+            }
+            
+            .about-content p, .project-content p, .workshop-info p, .events-info p {
+                font-size: 1rem;
+                text-align: center;
+            }
+            
+            .member-info p, .stage-card p, .workshop-item p, .event-item p {
+                font-size: 0.9rem;
+            }
+            
+            .stage-card, .workshop-item, .event-item {
+                padding: 20px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .contact-item {
+                padding: 10px;
+            }
+            
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 15px;
+                font-size: 1rem;
+            }
+            
+            .contact-details h3 {
+                font-size: 1.1rem;
+            }
+            
+            .contact-details p, .contact-details a {
+                font-size: 0.9rem;
+            }
+            
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .carousel-btn.prev {
+                left: -50px;
+            }
+            
+            .carousel-btn.next {
+                right: -50px;
+            }
+            
+            /* Imagen de proyecto más pequeña en móvil */
+            .project-image img {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .project-container, .workshop-container, .events-container, .contact-container {
+                flex-direction: column;
+            }
+            
+            .project-image, .project-content, .workshop-info, .workshop-list, .events-info, .events-list, .contact-info, .map-container {
+                width: 100%;
+            }
+            
+            .carousel-btn.prev {
+                left: -30px;
+            }
+            
+            .carousel-btn.next {
+                right: -30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.9rem;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .carousel-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .carousel-btn.prev {
+                left: -20px;
+            }
+            
+            .carousel-btn.next {
+                right: -20px;
+            }
+        }
+        
+        /* Versión escritorio - Eliminar estilo carrusel */
+        @media (min-width: 993px) {
+            .team-container {
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+            }
+            
+            .carousel-container {
+                overflow: visible;
+                width: auto;
+            }
+            
+            .carousel-track {
+                transform: none !important;
+                display: flex;
+                gap: 40px;
+            }
+            
+            .team-member {
+                flex: 0 0 auto;
+            }
+            
+            .carousel-btn {
+                display: none;
+            }
+            
+            .carousel-indicators {
+                display: none;
+            }
+            
+            /* Clases regulares - eliminar carrusel en escritorio */
+            .stage-carousel {
+                overflow: visible;
+            }
+            
+            .stage-track {
+                transform: none !important;
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+            }
+            
+            .stage-card {
+                flex: 0 0 auto;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Sticky Menu -->
-    <div class="sticky-menu">
-        <div class="logo-container">
-            <div class="logo-img">
-                <img src="https://placehold.co/100x100/FFD166/FFFFFF/?text=PA" alt="Logo El Punt FamiliART">
+    <!-- Header - SOLO UN HEADER STICKY -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+                </div>
+                <div class="logo-text">El Punt Famili<span>ART</span></div>
             </div>
-            <div class="logo-text">El Punt <span>FamiliART</span></div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#quien-somos">Quiénes Somos</a></li>
+                    <li><a href="#proyecto-objetivos">Proyecto</a></li>
+                    <li><a href="#clases-regulares">Clases</a></li>
+                    <li><a href="#talleres">Talleres</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <a href="noticias.html" class="nav-button">Noticias</a>
+                <a href="reservas.html" class="nav-button">Reservar Plaza</a>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
         </div>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="logo-mobile">
+                <div class="logo-mobile-icon">
+                    <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+                </div>
+                <div class="logo-mobile-text">El Punt Famili<span>ART</span></div>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quien-somos">Quiénes Somos</a></li>
+                <li><a href="#proyecto-objetivos">Proyecto</a></li>
+                <li><a href="#clases-regulares">Clases</a></li>
+                <li><a href="#talleres">Talleres</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="mobile-nav-buttons">
+                <a href="noticias.html" class="nav-button">Noticias</a>
+                <a href="reservas.html" class="nav-button">Reservar Plaza</a>
+            </div>
         </div>
-        <div class="menu-items" id="menuItems">
-            <a href="#inicio">Inicio</a>
-            <a href="#quienes-somos">Quiénes Somos</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#clases">Clases</a>
-            <a href="#talleres">Talleres</a>
-            <a href="#eventos">Eventos</a>
-            <a href="#contacto">Contacto</a>
-        </div>
-    </div>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="hero-content">
             <h1>El Punt FamiliART</h1>
-            <p>Un espacio de creación donde el arte y la comunidad se encuentran</p>
-            <a href="#contacto" class="btn">Contáctanos</a>
+            <p>Un espacio creativo donde el arte y la comunidad se encuentran. Talleres y clases para todas las edades en un ambiente inspirador.</p>
+            <div class="btn-container">
+                <a href="reservas.html" class="btn">Reservar Plaza</a>
+                <a href="#contacto" class="btn btn-outline">Contactar</a>
+            </div>
+            <div class="contact-message">
+                <p>¿Tienes dudas? Puedes contactarnos usando el botón <strong>"Contactar"</strong> de arriba</p>
+            </div>
         </div>
         <div class="hero-images">
-            <div class="hero-img">
-                <img src="https://placehold.co/400x300/8AC6D1/FFFFFF/?text=Arte+1" alt="Arte en El Punt FamiliART">
-            </div>
-            <div class="hero-img">
-                <img src="https://placehold.co/400x300/FFD166/FFFFFF/?text=Arte+2" alt="Arte en El Punt FamiliART">
+            <div class="image-collage">
+                <div class="collage-item">
+                    <img src="Captura de pantalla 2025-10-23 210451.png" alt="Arte infantil">
+                </div>
+                <div class="collage-item">
+                    <img src="Captura de pantalla 2025-10-23 193543.png" alt="Taller de arte">
+                </div>
+                <div class="collage-item">
+                    <img src="Captura de pantalla 2025-10-23 190201.png" alt="Pintura creativa">
+                </div>
+                <div class="collage-item">
+                    <img src="Captura de pantalla 2025-10-20 175523.png" alt="Arte en comunidad">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Quiénes Somos -->
-    <section id="quienes-somos">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Quiénes Somos</h2>
-                <p>El corazón de nuestro taller creativo</p>
+    <section id="quien-somos">
+        <div class="section-header">
+            <h2>Quiénes Somos</h2>
+            <p>Conoce nuestro equipo y nuestra historia</p>
+        </div>
+        <div class="about-container">
+            <div class="about-content">
+                <h3>Nuestra Historia</h3>
+                <p>El Punt FamiliART nació de la pasión por el arte y la educación, con el objetivo de crear un espacio donde la creatividad y la comunidad se encuentren. Un lugar para que niños, jóvenes y adultos puedan explorar, aprender, compartir y dejar que la imaginación florezca.</p>
+                <p>Es el inicio de una nueva etapa, hecha con cariño, raíces y mucha ilusión. Un espacio de creación y transformación donde el arte se convierte en una herramienta de expresión, crecimiento personal y conexión con los demás.</p>
             </div>
-            <div class="carousel-container">
-                <div class="carousel" id="teamCarousel">
-                    <div class="carousel-item">
-                        <div class="team-card">
-                            <div class="team-image">
-                                <img src="https://placehold.co/140x140/FF9E6D/FFFFFF/?text=Eva" alt="Eva - Arteterapeuta">
+            
+            <div class="team-section">
+                <h3>Nuestro Equipo</h3>
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="teamPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-container">
+                        <div class="carousel-track" id="teamTrack">
+                            <div class="team-member">
+                                <div class="member-img eva">
+                                    <!-- Imagen de Eva -->
+                                </div>
+                                <div class="member-info">
+                                    <h3>Eva</h3>
+                                    <p>Arteterapeuta y artista, con años de experiencia en educación artística. Mi pasión es acompañar procesos creativos y emocionales con sensibilidad y cuidado, creando espacios donde cada persona pueda expresarse con libertad.</p>
+                                </div>
                             </div>
-                            <h3 class="team-name">Eva</h3>
-                            <div class="team-role">Arteterapeuta y Artista</div>
-                            <div class="team-description">
-                                <p>Arteterapeuta y artista con años de experiencia en educación artística. Mi pasión es acompañar procesos creativos y emocionales con sensibilidad y cuidado.</p>
+                            <div class="team-member">
+                                <div class="member-img laura">
+                                    <!-- Imagen de Laura -->
+                                </div>
+                                <div class="member-info">
+                                    <h3>Laura</h3>
+                                    <p>Maestra de infantil y primaria, con experiencia en el mundo de la educación y un vínculo muy especial con los peques, a quienes me gusta acompañar desde la ternura, la cercanía y el juego.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="team-card">
-                            <div class="team-image">
-                                <img src="https://placehold.co/140x140/FFD166/FFFFFF/?text=Laura" alt="Laura - Maestra">
-                            </div>
-                            <h3 class="team-name">Laura</h3>
-                            <div class="team-role">Maestra de Infantil y Primaria</div>
-                            <div class="team-description">
-                                <p>Maestra de infantil y primaria, con experiencia en el mundo de la educación y un vínculo muy especial con los peques, a quienes me gusta acompañar desde la ternura, la cercanía y el juego.</p>
-                            </div>
-                        </div>
+                    <button class="carousel-btn next" id="teamNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
                     </div>
                 </div>
-                <button class="carousel-btn prev" id="teamPrevBtn"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next" id="teamNextBtn"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div class="history-section">
-                <h3>Nuestra Historia</h3>
-                <p>Juntas formamos un tándem perfecto!! Creatividad, sensibilidad y educación. Y desde hoy, unidas para dar vida a este espacio donde el arte se convierte en transformación, disfrute y crecimiento.</p>
             </div>
         </div>
     </section>
 
-    <!-- Proyectos y Objetivos -->
-    <section id="proyectos">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Proyectos y Objetivos</h2>
-                <p>Nuestra visión y metas creativas</p>
+    <!-- Proyecto y Objetivos -->
+    <section id="proyecto-objetivos">
+        <div class="section-header">
+            <h2>Proyecto y Objetivos</h2>
+            <p>Nuestra visión y metas para la comunidad</p>
+        </div>
+        <div class="project-container">
+            <div class="project-image">
+                <img id="project-image" src="Captura de pantalla 2025-10-23 210611.png" alt="Nuestro espacio creativo">
             </div>
-            <div class="carousel-container">
-                <div class="carousel" id="projectsCarousel">
-                    <div class="carousel-item">
-                        <div class="card">
-                            <h3>Educación Artística Inclusiva</h3>
-                            <p>Creemos en el arte como herramienta de inclusión y expresión para todas las personas, independientemente de sus capacidades. Nuestros talleres están diseñados para ser accesibles y significativos para todos los participantes.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card">
-                            <h3>Arte y Bienestar Emocional</h3>
-                            <p>El arte como medio para el autocuidado y la regulación emocional. Nuestros talleres promueven la autoestima, la confianza y el bienestar general a través de la expresión creativa.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="card">
-                            <h3>Comunidad Creativa</h3>
-                            <p>Fomentamos un ambiente de colaboración y apoyo mutuo donde las personas pueden compartir experiencias, aprender unas de otras y construir relaciones significativas alrededor del arte.</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-btn prev" id="projectsPrevBtn"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next" id="projectsNextBtn"><i class="fas fa-chevron-right"></i></button>
+            <div class="project-content">
+                <h3>Nuestro Proyecto</h3>
+                <p>En El Punt FamiliART creemos en el poder transformador del arte. Nuestro proyecto se centra en crear un espacio inclusivo y acogedor donde personas de todas las edades puedan explorar su creatividad, desarrollar habilidades artísticas y conectar con una comunidad de personas con intereses similares.</p>
+                <p>Nos enfocamos en procesos más que en resultados, valorando la expresión personal y el disfrute del camino creativo por encima de la perfección técnica.</p>
+                
+                <h3>Nuestros Objetivos</h3>
+                <ul class="objectives-list">
+                    <li>Fomentar la expresión creativa en todas las edades</li>
+                    <li>Crear un espacio seguro para la exploración artística</li>
+                    <li>Promover la conexión comunitaria a través del arte</li>
+                    <li>Desarrollar habilidades artísticas y de pensamiento creativo</li>
+                    <li>Ofrecer herramientas para el bienestar emocional a través del arte</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <!-- Clases Regulares -->
-    <section id="clases">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Clases Regulares</h2>
-                <p>Programas adaptados a cada etapa del desarrollo</p>
+    <section id="clases-regulares">
+        <div class="section-header">
+            <h2>Clases Regulares</h2>
+            <p>Encuentra la clase que mejor se adapte a tus necesidades</p>
+        </div>
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" data-tab="etapas">Etapas</button>
+                <button class="tab" data-tab="horario">Horario</button>
+                <button class="tab" data-tab="inscripcion">Inscripción</button>
             </div>
-            <div class="team-grid">
-                <div class="card">
-                    <h3>Etapas</h3>
-                    <p><strong>Infantil (3-6 años):</strong> Introducción al arte a través del juego y la exploración sensorial.</p>
-                    <p><strong>Primaria (6-12 años):</strong> Desarrollo de técnicas artísticas básicas y estimulación de la imaginación.</p>
-                    <p><strong>Adultos:</strong> Espacio de relajación y autoexpresión con técnicas variadas.</p>
+            
+            <div class="tab-content active" id="etapas">
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="stagePrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="stage-carousel">
+                        <div class="stage-track" id="stageTrack">
+                            <div class="stage-card">
+                                <h3>Infantil</h3>
+                                <p>Para los más pequeños, un espacio donde explorar texturas, colores y formas a través del juego y la experimentación.</p>
+                                <p><strong>Edades:</strong> I3, I4 y I5</p>
+                                <p><strong>Precio:</strong> 50€/mes + matrícula</p>
+                            </div>
+                            <div class="stage-card">
+                                <h3>Primaria</h3>
+                                <p>Desarrollo de habilidades artísticas y creativas adaptadas a cada ciclo de primaria, fomentando la expresión personal.</p>
+                                <p><strong>Ciclos:</strong> Inicial, Medio y Superior</p>
+                                <p><strong>Precio:</strong> 50€/mes + matrícula</p>
+                            </div>
+                            <div class="stage-card">
+                                <h3>Adultos</h3>
+                                <p>Un espacio para desconectar, explorar técnicas artísticas y conectar con tu creatividad en un ambiente relajado.</p>
+                                <p><strong>Modalidades:</strong> Con o sin materiales incluidos</p>
+                                <p><strong>Precio:</strong> 55-65€/mes + matrícula</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="stageNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <div class="carousel-indicators">
+                        <div class="indicator active" data-index="0"></div>
+                        <div class="indicator" data-index="1"></div>
+                        <div class="indicator" data-index="2"></div>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3>Horario y Calendario</h3>
-                    <p>Consultar disponibilidad y horarios específicos para cada etapa</p>
-                </div>
-                <div class="card">
-                    <h3>Formulario y Inscripción</h3>
-                    <a href="#contacto" class="btn">Solicitar Información</a>
+            </div>
+            
+            <div class="tab-content" id="horario">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Día</th>
+                            <th>Grupo</th>
+                            <th>Horario</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jueves</td>
+                            <td>Infantil (I3, I4 y I5)</td>
+                            <td>17:30h - 19:00h</td>
+                        </tr>
+                        <tr>
+                            <td>Lunes</td>
+                            <td>Primaria - Ciclo medio (3º y 4º)</td>
+                            <td>17:30h - 19:00h</td>
+                        </tr>
+                        <tr>
+                            <td>Martes</td>
+                            <td>Primaria - Ciclo superior (5º y 6º)</td>
+                            <td>17:30h - 19:00h</td>
+                        </tr>
+                        <tr>
+                            <td>Miércoles</td>
+                            <td>Primaria - Ciclo inicial (1º y 2º)</td>
+                            <td>17:30h - 19:00h</td>
+                        </tr>
+                        <tr>
+                            <td>Miércoles</td>
+                            <td>ESO</td>
+                            <td>15:30h - 17:00h</td>
+                        </tr>
+                        <tr>
+                            <td>Martes</td>
+                            <td>Adultos (mañana o tarde)</td>
+                            <td>10:00h - 12:00h / 19:00h - 21:00h</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="tab-content" id="inscripcion">
+                <div class="form-container">
+                    <h3>Formulario de Inscripción</h3>
+                    <form id="inscription-form">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="participant">Participante</label>
+                            <select id="participant" name="participant" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="infantil">Infantil</option>
+                                <option value="primaria">Primaria</option>
+                                <option value="adulto">Adulto</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="schedule">Horario preferente</label>
+                            <select id="schedule" name="schedule" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="jueves-tarde">Jueves tarde (17:30-19:00)</option>
+                                <option value="lunes-tarde">Lunes tarde (17:30-19:00)</option>
+                                <option value="martes-tarde">Martes tarde (17:30-19:00)</option>
+                                <option value="miercoles-tarde">Miércoles tarde (17:30-19:00)</option>
+                                <option value="miercoles-temprano">Miércoles temprano (15:30-17:00)</option>
+                                <option value="martes-manana">Martes mañana (10:00-12:00)</option>
+                                <option value="martes-tarde-adultos">Martes tarde adultos (19:00-21:00)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje adicional</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar solicitud</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -913,72 +1780,109 @@
 
     <!-- Talleres -->
     <section id="talleres">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Talleres Especiales</h2>
-                <p>Actividades temáticas y eventos creativos</p>
+        <div class="section-header">
+            <h2>Talleres</h2>
+            <p>Descubre nuestros talleres especiales y temporales</p>
+        </div>
+        <div class="workshop-container">
+            <div class="workshop-info">
+                <h3>Información General</h3>
+                <p>Nuestros talleres están diseñados para explorar técnicas específicas, temas particulares o celebrar ocasiones especiales. Son actividades puntuales que permiten experimentar con diferentes materiales y enfoques creativos.</p>
+                <p><strong>Horario general:</strong> Viernes de 18:00h a 20:00h</p>
+                <p>Los talleres están abiertos a niños, adultos y familias. Consulta la disponibilidad y requisitos específicos para cada taller.</p>
+                <a href="reservas.html" class="btn">Reserva tu plaza</a>
             </div>
-            <div class="carousel-container">
-                <div class="carousel" id="workshopsCarousel">
-                    <div class="carousel-item">
-                        <div class="workshop-card">
-                            <h3>Taller de Cerámica para Niños</h3>
-                            <p>Un espacio donde los más pequeños pueden moldear con sus manos y crear objetos únicos con arcilla.</p>
-                            <span class="workshop-ages">Edad: 4 a 12 años</span>
-                            <p class="workshop-schedule"><strong>Horario:</strong> Consultar disponibilidad</p>
+            <div class="workshop-list">
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="workshopPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="workshop-carousel">
+                        <div class="workshop-track" id="workshopTrack">
+                            <div class="workshop-item">
+                                <h4>Pintura con Acuarela</h4>
+                                <p>Descubre las técnicas básicas de la acuarela y crea tus propias obras llenas de color y transparencia.</p>
+                                <div class="workshop-meta">
+                                    <span>Viernes 18:00-20:00</span>
+                                    <span>25€</span>
+                                </div>
+                            </div>
+                            <div class="workshop-item">
+                                <h4>Creación con Arcilla</h4>
+                                <p>Modela y da forma a la arcilla para crear piezas únicas que luego podrás pintar y llevar a casa.</p>
+                                <div class="workshop-meta">
+                                    <span>Viernes 18:00-20:00</span>
+                                    <span>30€</span>
+                                </div>
+                            </div>
+                            <div class="workshop-item">
+                                <h4>Arte Reciclado</h4>
+                                <p>Aprende a transformar materiales cotidianos en obras de arte originales y respetuosas con el medio ambiente.</p>
+                                <div class="workshop-meta">
+                                    <span>Viernes 18:00-20:00</span>
+                                    <span>20€</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
-                        <div class="workshop-card">
-                            <h3>Taller de Pintura y Dibujo</h3>
-                            <p>Exploramos diferentes técnicas artísticas para que niños y adultos den rienda suelta a su imaginación.</p>
-                            <span class="workshop-ages">Edad: +5 años</span>
-                            <p class="workshop-schedule"><strong>Horario:</strong> Consultar disponibilidad</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="workshop-card">
-                            <h3>Taller de Manualidades con Reciclaje</h3>
-                            <p>Aprendemos a dar una nueva vida a objetos cotidianos creando piezas decorativas y útiles.</p>
-                            <span class="workshop-ages">Edad: +8 años</span>
-                            <p class="workshop-schedule"><strong>Horario:</strong> Consultar disponibilidad</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="workshop-card">
-                            <h3>Taller de Adultos - Arte y Relajación</h3>
-                            <p>Un rincón para adultos donde combinar la creatividad con la relajación y el autocuidado.</p>
-                            <span class="workshop-ages">Edad: +18 años</span>
-                            <p class="workshop-schedule"><strong>Horario:</strong> Consultar disponibilidad</p>
-                        </div>
-                    </div>
+                    <button class="carousel-btn next" id="workshopNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
-                <button class="carousel-btn prev" id="workshopsPrevBtn"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next" id="workshopsNextBtn"><i class="fas fa-chevron-right"></i></button>
-            </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="#contacto" class="btn">Reservar Taller</a>
             </div>
         </div>
     </section>
 
     <!-- Eventos -->
     <section id="eventos">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Eventos</h2>
-                <p>Actividades especiales y celebraciones creativas</p>
+        <div class="section-header">
+            <h2>Eventos</h2>
+            <p>Celebra tus momentos especiales con nosotros</p>
+        </div>
+        <div class="events-container">
+            <div class="events-info">
+                <h3>Información de Eventos</h3>
+                <p>Ofrecemos nuestro espacio para celebrar eventos privados como cumpleaños, despedidas, babyshowers, team building y otras ocasiones especiales. Adaptamos la actividad creativa a la temática de tu evento.</p>
+                <p><strong>Horario disponible:</strong> Sábados de 11:00h a 13:00h y de 18:00h a 20:00h</p>
+                <p>Incluimos todos los materiales necesarios y la guía de nuestros profesionales para que tu evento sea único y memorable.</p>
+                <a href="reservas.html" class="btn">Reserva tu evento</a>
             </div>
-            <div class="team-grid">
-                <div class="card">
-                    <h3>Info + Horario</h3>
-                    <p><strong>Cumpleaños Creativos:</strong> Sábados mañana/tarde (10:00 - 14:00 o 16:00 - 20:00)</p>
-                    <p><strong>Despedidas y Celebraciones:</strong> Sábados mañana/tarde</p>
-                    <p><strong>Team Building:</strong> Consultar disponibilidad</p>
-                </div>
-                <div class="card">
-                    <h3>Reserva</h3>
-                    <a href="#contacto" class="btn">Reservar Evento</a>
+            <div class="events-list">
+                <div class="team-container">
+                    <button class="carousel-btn prev" id="eventsPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="events-carousel">
+                        <div class="events-track" id="eventsTrack">
+                            <div class="event-item">
+                                <h4>Cumpleaños Creativos</h4>
+                                <p>Celebra un cumpleaños único con una actividad artística adaptada a la edad de los participantes.</p>
+                                <div class="event-meta">
+                                    <span>2 horas</span>
+                                    <span>Desde 150€</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <h4>Team Building</h4>
+                                <p>Actividades creativas para empresas que fomentan el trabajo en equipo y la innovación.</p>
+                                <div class="event-meta">
+                                    <span>2-3 horas</span>
+                                    <span>Consultar precio</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <h4>Celebraciones Familiares</h4>
+                                <p>Despedidas, babyshowers o reuniones familiares con un toque creativo y personalizado.</p>
+                                <div class="event-meta">
+                                    <span>2 horas</span>
+                                    <span>Desde 120€</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-btn next" id="eventsNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -986,53 +1890,51 @@
 
     <!-- Contacto -->
     <section id="contacto">
-        <div class="section-container">
-            <div class="section-header">
-                <h2>Contacto</h2>
-                <p>¿Tienes alguna pregunta? ¡Escríbenos!</p>
+        <div class="section-header">
+            <h2>Contacto</h2>
+            <p>No dudes en ponerte en contacto con nosotros</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Ubicación</h3>
+                        <p>Carrer Vint-I-Dos, 70, 43100 Tarragona</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <a href="mailto:elpuntfamiliart@gmail.com">elpuntfamiliart@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Instagram</h3>
+                        <a href="https://www.instagram.com/elpuntfamiliart/" target="_blank">@elpuntfamiliart</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/34657917174" target="_blank">657 917 174</a>
+                    </div>
+                </div>
             </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Ubicación</h3>
-                            <p>Carrer Vint-I-Dos, 70, 43100 Tarragona</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <a href="mailto:elpuntfamiliart@gmail.com">elpuntfamiliart@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-instagram"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Instagram</h3>
-                            <a href="https://instagram.com/elpuntfamiliart" target="_blank">@elpuntfamiliart</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Teléfono</h3>
-                            <a href="https://wa.me/34657917174" target="_blank">657 917 174</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2983.632381184242!2d1.2454453153489056!3d41.11754437928945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDFDMTAnMzMuMSJNIDEKMDUnMTUuNCJF!5e0!3m2!1ses!2ses!4v1620000000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
-                </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11977.100985472844!2d1.2001968999999999!3d41.144490350000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a02e604f33d7b3%3A0x867332d75a1372b6!2sCarrer%20Vint-I-Dos%2C%2070%2C%2043100%20Tarragona!5e0!3m2!1ses!2ses!4v1699920000000!5m2!1ses!2ses" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
@@ -1040,26 +1942,28 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">El Punt <span>FamiliART</span></div>
-            <p>Un espacio creativo donde el arte, la creatividad y la comunidad se encuentran. Ofrecemos talleres y actividades para todas las edades, desde los más pequeños hasta adultos.</p>
-            <p>Ven a descubrir tu lado artístico con nosotros.</p>
+            <div class="footer-about">
+                <h3>El Punt FamiliART</h3>
+                <p>Un espacio creativo donde el arte, la creatividad y la comunidad se encuentran. Ofrecemos talleres y actividades para todas las edades, desde los más pequeños hasta adultos.</p>
+                <p>Ven a descubrir tu lado artístico con nosotros.</p>
+            </div>
             <div class="footer-links">
-                <a href="#inicio">Inicio</a>
-                <a href="#quienes-somos">Quiénes Somos</a>
-                <a href="#proyectos">Proyectos</a>
-                <a href="#clases">Clases</a>
-                <a href="#talleres">Talleres</a>
-                <a href="#eventos">Eventos</a>
-                <a href="#contacto">Contacto</a>
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#quien-somos">Quiénes Somos</a></li>
+                    <li><a href="#proyecto-objetivos">Proyecto y Objetivos</a></li>
+                    <li><a href="#clases-regulares">Clases Regulares</a></li>
+                    <li><a href="#talleres">Talleres</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="reservas.html">Reservar Plaza</a></li>
+                </ul>
             </div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 El Punt FamiliART. Todos los derechos reservados.</p>
-            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 El Punt FamiliART. Todos los derechos reservados.</p>
         </div>
     </footer>
 
@@ -1069,106 +1973,135 @@
     </a>
 
     <script>
-        // Toggle menu
-        const menuToggle = document.getElementById('menuToggle');
-        const menuItems = document.getElementById('menuItems');
-        menuToggle.addEventListener('click', () => {
-            menuItems.classList.toggle('show');
-            menuToggle.innerHTML = menuItems.classList.contains('show') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        // Menú Hamburguesa
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        hamburgerMenu.addEventListener('click', () => {
+            mobileMenu.classList.toggle('show');
         });
-
-        // Smooth scroll for navigation links
+        
+        // Cerrar menú al hacer clic en un enlace
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+            });
+        });
+        
+        // Smooth scroll para los enlaces de navegación
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                
                 const targetId = this.getAttribute('href');
-                if (targetId === '#' || targetId === '#noticias') return; // Handle noticias link separately
+                if (targetId === '#') return;
+                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    // Close menu on mobile after clicking
-                    if (window.innerWidth <= 768) {
-                        menuItems.classList.remove('show');
-                        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
                 }
             });
         });
-
-        // Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    // Animate elements inside sections
-                    const teamCards = entry.target.querySelectorAll('.team-card');
-                    const contactItems = entry.target.querySelectorAll('.contact-item');
-                    const workshopCards = entry.target.querySelectorAll('.workshop-card');
-
-                    teamCards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                        }, index * 200);
-                    });
-
-                    contactItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.add('visible');
-                        }, index * 200);
-                    });
-
-                    workshopCards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('visible');
-                        }, index * 150);
-                    });
-                }
+        
+        // Sistema de pestañas
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remover clase active de todas las pestañas y contenidos
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Añadir clase active a la pestaña clickeada
+                tab.classList.add('active');
+                
+                // Mostrar el contenido correspondiente
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
             });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
         });
-
-        // Carruseles
-        function initCarousel(carouselId, prevBtnId, nextBtnId) {
-            const carousel = document.getElementById(carouselId);
-            const prevBtn = document.getElementById(prevBtnId);
-            const nextBtn = document.getElementById(nextBtnId);
-            let currentIndex = 0;
-            const items = document.querySelectorAll(`#${carouselId} .carousel-item`);
-            const totalItems = items.length;
-
-            function updateCarousel() {
-                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                updateCarousel();
-            });
-
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalItems;
-                updateCarousel();
+        
+        // Formulario de inscripción
+        const inscriptionForm = document.getElementById('inscription-form');
+        if (inscriptionForm) {
+            inscriptionForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Recoger datos del formulario
+                const formData = new FormData(inscriptionForm);
+                const name = formData.get('name');
+                const email = formData.get('email');
+                const phone = formData.get('phone');
+                const participant = formData.get('participant');
+                const schedule = formData.get('schedule');
+                const message = formData.get('message');
+                
+                // Crear mensaje para WhatsApp
+                const whatsappMessage = `Hola, me gustaría solicitar información para inscripción:%0A%0A*Nombre:* ${name}%0A*Email:* ${email}%0A*Teléfono:* ${phone}%0A*Participante:* ${participant}%0A*Horario preferente:* ${schedule}%0A*Mensaje:* ${message || 'Ninguno'}`;
+                
+                // Redirigir a WhatsApp
+                window.open(`https://wa.me/34657917174?text=${whatsappMessage}`, '_blank');
+                
+                // Resetear formulario
+                inscriptionForm.reset();
             });
         }
-
-        // Inicializar carruseles
-        initCarousel('teamCarousel', 'teamPrevBtn', 'teamNextBtn');
-        initCarousel('projectsCarousel', 'projectsPrevBtn', 'projectsNextBtn');
-        initCarousel('workshopsCarousel', 'workshopsPrevBtn', 'workshopsNextBtn');
+        
+        // Carousel functionality - Mejorado para mostrar solo un elemento a la vez
+        function initCarousel(prevBtnId, nextBtnId, trackId, indicatorsSelector, itemCount) {
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            const track = document.getElementById(trackId);
+            const indicators = document.querySelectorAll(indicatorsSelector);
+            let currentIndex = 0;
+            
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Actualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + itemCount) % itemCount;
+                updateCarousel();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % itemCount;
+                updateCarousel();
+            });
+            
+            // Agregar eventos a los indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Initialize
+            updateCarousel();
+        }
+        
+        // Initialize all carousels
+        document.addEventListener('DOMContentLoaded', () => {
+            initCarousel('teamPrev', 'teamNext', 'teamTrack', '.team-section .indicator', 2);
+            initCarousel('stagePrev', 'stageNext', 'stageTrack', '#etapas .indicator', 3);
+            initCarousel('workshopPrev', 'workshopNext', 'workshopTrack', null, 3);
+            initCarousel('eventsPrev', 'eventsNext', 'eventsTrack', null, 3);
+        });
     </script>
 </body>
 </html>
-```
