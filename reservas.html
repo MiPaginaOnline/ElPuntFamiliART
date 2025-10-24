@@ -16,85 +16,134 @@
             --texto: #4A4A4A;
             --gris: #8A8A8A;
             --borde: #E0E0E0;
+            --titulo-principal: #E8B4B8;
+            --titulo-secundario: #A67C52;
         }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Raleway', sans-serif;
             color: var(--texto);
             background-color: var(--blanco);
             line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url("image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-3.134-3-3-3-3 3.134-3 3 3.134 3 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23e8b4b8' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
-        
         h1, h2, h3, h4, h5 {
             font-family: 'Playfair Display', serif;
-            font-weight: 600;
+            font-weight: 700;
             line-height: 1.3;
         }
-        
+
         /* Header Sticky */
         header {
-            background-color: var(--blanco);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            position: fixed;
             width: 100%;
+            position: fixed;
             top: 0;
             z-index: 1000;
-            padding: 15px 5%;
+            padding: 10px 5%;
+            transition: all 0.3s ease;
+            display: none; /* Oculto por defecto */
         }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
+        @media (max-width: 992px) {
+            header {
+                display: flex; /* Visible en móvil */
+                justify-content: space-between;
+                align-items: center;
+            }
+            .logo-sticky {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            .logo-sticky img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 1px solid var(--borde);
+            }
+            .logo-sticky span {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: var(--texto);
+                font-family: 'Playfair Display', serif;
+            }
+            .logo-sticky span span {
+                color: var(--rosa);
+            }
+            .hamburger-menu-sticky {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+            }
+            .bar {
+                width: 25px;
+                height: 2px;
+                background-color: var(--texto);
+                margin: 3px 0;
+                transition: 0.4s;
+            }
         }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 1px solid var(--borde);
-        }
-        
-        .logo-icon img {
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
+        .mobile-menu.show {
+            display: flex;
+        }
+        .mobile-menu-content {
+            background-color: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .mobile-menu-content ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .mobile-menu-content ul li {
+            margin: 15px 0;
+        }
+        .mobile-menu-content ul li a {
+            text-decoration: none;
             color: var(--texto);
-            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            transition: color 0.3s ease;
         }
-        
-        .logo-text span {
+        .mobile-menu-content ul li a:hover {
             color: var(--rosa);
         }
-        
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .nav-button {
+        .mobile-menu-content .nav-button {
             background-color: var(--rosa);
             color: var(--blanco);
             border: none;
@@ -106,64 +155,78 @@
             font-size: 0.9rem;
             text-decoration: none;
             display: inline-block;
+            margin: 5px;
         }
-        
-        .nav-button:hover {
+        .mobile-menu-content .nav-button:hover {
             background-color: var(--amarillo);
             color: var(--texto);
         }
-        
-        /* Contenido Reservas */
-        .reservas-page {
-            padding-top: 100px;
-            min-height: 100vh;
-            background-color: var(--blanco);
-        }
-        
-        .page-header {
-            text-align: center;
-            padding: 60px 5% 40px;
-            background-color: var(--amarillo-claro);
-        }
-        
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 15px;
+        .close-menu {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
             color: var(--texto);
+            cursor: pointer;
         }
-        
-        .page-header p {
+
+        /* Secciones */
+        section {
+            padding: 120px 5% 60px; /* Ajustado para header sticky */
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 3.2rem;
+            color: var(--titulo-principal);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--rosa), var(--amarillo));
+        }
+        .section-header p {
             max-width: 700px;
             margin: 0 auto;
             color: var(--gris);
             font-size: 1.1rem;
         }
-        
-        .reservas-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 60px 5%;
+
+        /* Reservas */
+        #reservas {
+            background-color: var(--amarillo-claro);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20,20 C40,0 60,0 80,20 C100,40 100,60 80,80 C60,100 40,100 20,80 C0,60 0,40 20,20 Z' fill='none' stroke='%23E8D3A2' stroke-width='2' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 160px;
         }
-        
         .form-container {
+            max-width: 600px;
+            margin: 0 auto;
             background-color: var(--blanco);
-            padding: 40px;
-            border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--borde);
         }
-        
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-        
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
             color: var(--texto);
         }
-        
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px 15px;
@@ -173,123 +236,110 @@
             transition: all 0.3s ease;
             font-family: 'Raleway', sans-serif;
         }
-        
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: var(--rosa);
             box-shadow: 0 0 0 2px rgba(232, 180, 184, 0.1);
             outline: none;
         }
-        
-        .form-row {
+        .reservation-types {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
         }
-        
-        .form-row .form-group {
+        .reservation-type {
             flex: 1;
             min-width: 200px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--rosa);
-            color: var(--blanco);
-            padding: 14px 32px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-            letter-spacing: 0.5px;
-        }
-        
-        .btn:hover {
-            background-color: var(--amarillo);
-            color: var(--texto);
-            transform: translateY(-2px);
-        }
-        
-        .btn-full {
-            width: 100%;
+            background-color: var(--blanco);
+            border-radius: 8px;
+            padding: 20px;
             text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--borde);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        
+        .reservation-type:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .reservation-type.active {
+            border-color: var(--rosa);
+            background-color: var(--rosa-claro);
+        }
+        .reservation-type h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--titulo-secundario);
+        }
+        .reservation-type p {
+            font-size: 0.9rem;
+            color: var(--gris);
+        }
+
         /* Footer */
         footer {
             background-color: var(--texto);
             color: white;
-            padding: 60px 5% 30px;
+            padding: 40px 5% 20px;
         }
-        
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
             max-width: 1200px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
         }
-        
         .footer-about {
             flex: 1;
-            min-width: 300px;
+            min-width: 250px;
         }
-        
         .footer-about h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: var(--rosa);
         }
-        
         .footer-about p {
             color: #ccc;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
-        
         .footer-links {
             flex: 1;
-            min-width: 200px;
+            min-width: 180px;
         }
-        
         .footer-links h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: var(--amarillo);
         }
-        
         .footer-links ul {
             list-style: none;
         }
-        
         .footer-links ul li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
-        
         .footer-links ul li a {
             color: #ccc;
             text-decoration: none;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
-        
         .footer-links ul li a:hover {
             color: var(--rosa);
         }
-        
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             max-width: 1200px;
             margin: 0 auto;
             color: #aaa;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
-        
+
         /* Botón de WhatsApp */
         .whatsapp-btn {
             position: fixed;
@@ -297,133 +347,145 @@
             right: 25px;
             background-color: #25D366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             transition: all 0.4s ease;
             text-decoration: none;
         }
-        
         .whatsapp-btn:hover {
             transform: scale(1.1);
             background-color: #128C7E;
         }
-        
-        @media (max-width: 768px) {
-            .page-header h1 {
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            section {
+                padding: 100px 5% 60px; /* Ajustado */
+            }
+            .section-header h2 {
                 font-size: 2.5rem;
             }
-            
-            .form-container {
-                padding: 25px;
+            .section-header p {
+                font-size: 1rem;
             }
-            
-            .form-row {
+        }
+        @media (max-width: 768px) {
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .section-header h2 {
+                font-size: 1.9rem;
+            }
+            .btn-container {
+                display: flex;
                 flex-direction: column;
-                gap: 0;
+                gap: 15px;
+            }
+            .btn-outline {
+                margin-left: 0;
+            }
+            .reservation-types {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Sticky -->
+    <!-- Header Sticky (Solo en móvil) -->
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
-                </div>
-                <div class="logo-text">El Punt Famili<span>ART</span></div>
-            </div>
-            <nav>
-                <a href="index.html" class="nav-button">Volver al Inicio</a>
-                <a href="noticias.html" class="nav-button">Noticias</a>
-            </nav>
+        <div class="logo-sticky">
+            <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+            <span>El Punt Famili<span>ART</span></span>
+        </div>
+        <div class="hamburger-menu-sticky" id="hamburgerMenuSticky">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
     </header>
 
-    <!-- Contenido Reservas -->
-    <div class="reservas-page">
-        <div class="page-header">
-            <h1>Reservar Plaza</h1>
-            <p>Completa el formulario para reservar tu plaza en nuestras clases, talleres o eventos</p>
-        </div>
-        
-        <div class="reservas-container">
-            <div class="form-container">
-                <form id="reserva-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nombre">Nombre completo *</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="telefono">Teléfono *</label>
-                            <input type="tel" id="telefono" name="telefono" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="participantes">Número de participantes</label>
-                            <input type="number" id="participantes" name="participantes" min="1" value="1">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="tipo-actividad">Tipo de actividad *</label>
-                        <select id="tipo-actividad" name="tipo-actividad" required>
-                            <option value="">Selecciona una opción</option>
-                            <option value="clase-infantil">Clase Infantil</option>
-                            <option value="clase-primaria">Clase Primaria</option>
-                            <option value="clase-adultos">Clase Adultos</option>
-                            <option value="taller-pintura">Taller de Pintura</option>
-                            <option value="taller-arcilla">Taller de Arcilla</option>
-                            <option value="taller-reciclado">Taller de Arte Reciclado</option>
-                            <option value="evento-cumpleanos">Evento Cumpleaños</option>
-                            <option value="evento-familiar">Evento Familiar</option>
-                            <option value="evento-empresa">Evento Empresa</option>
-                            <option value="otro">Otro</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="fecha-preferred">Fecha preferente</label>
-                        <input type="date" id="fecha-preferred" name="fecha-preferred">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="horario-preferred">Horario preferente</label>
-                        <select id="horario-preferred" name="horario-preferred">
-                            <option value="">Selecciona una opción</option>
-                            <option value="manana">Mañana (10:00-12:00)</option>
-                            <option value="tarde">Tarde (17:30-19:00)</option>
-                            <option value="tarde-tardia">Tarde tardía (19:00-21:00)</option>
-                            <option value="finde-manana">Fin de semana mañana (11:00-13:00)</option>
-                            <option value="finde-tarde">Fin de semana tarde (18:00-20:00)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="mensaje">Mensaje adicional</label>
-                        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Comentarios, preguntas o necesidades especiales..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-full">Enviar Solicitud de Reserva</button>
-                </form>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <span class="close-menu" id="closeMenu">&times;</span>
+            <div class="logo-sticky">
+                <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
+                <span>El Punt Famili<span>ART</span></span>
             </div>
+            <ul>
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                <li><a href="proyecto-objetivos.html">Proyecto</a></li>
+                <li><a href="clases.html">Clases</a></li>
+                <li><a href="talleres.html">Talleres</a></li>
+                <li><a href="eventos.html">Eventos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+            <a href="reservas.html" class="nav-button">Reservar Plaza</a>
+            <a href="noticias.html" class="nav-button">Noticias</a>
         </div>
     </div>
+
+    <!-- Reservas -->
+    <section id="reservas">
+        <div class="section-header">
+            <h2>Reservar Plaza</h2>
+            <p>Elige el tipo de reserva que deseas realizar</p>
+        </div>
+        <div class="reservation-types">
+            <div class="reservation-type active" data-type="clase">
+                <h4>Clase Regular</h4>
+                <p>Inscripción para clases semanales.</p>
+            </div>
+            <div class="reservation-type" data-type="taller">
+                <h4>Taller Especial</h4>
+                <p>Reserva para talleres puntuales.</p>
+            </div>
+            <div class="reservation-type" data-type="evento">
+                <h4>Evento Privado</h4>
+                <p>Alquiler del espacio para cumpleaños, etc.</p>
+            </div>
+        </div>
+        <div class="form-container">
+            <h3>Formulario de Reserva</h3>
+            <form id="reservation-form">
+                <div class="form-group">
+                    <label for="reservation-name">Nombre completo</label>
+                    <input type="text" id="reservation-name" name="reservation-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-email">Email</label>
+                    <input type="email" id="reservation-email" name="reservation-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-phone">Teléfono</label>
+                    <input type="tel" id="reservation-phone" name="reservation-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-type-select">Tipo de Reserva</label>
+                    <select id="reservation-type-select" name="reservation-type" required>
+                        <option value="clase">Clase Regular</option>
+                        <option value="taller">Taller Especial</option>
+                        <option value="evento">Evento Privado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="reservation-message">Mensaje / Comentarios</label>
+                    <textarea id="reservation-message" name="reservation-message" rows="4" placeholder="Ej: Me interesa el taller de acuarela, o fecha preferida para el evento..."></textarea>
+                </div>
+                <button type="submit" class="btn">Enviar Reserva</button>
+            </form>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -435,13 +497,15 @@
             <div class="footer-links">
                 <h3>Enlaces Rápidos</h3>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="index.html#quien-somos">Quiénes Somos</a></li>
-                    <li><a href="index.html#clases-regulares">Clases</a></li>
-                    <li><a href="index.html#talleres">Talleres</a></li>
-                    <li><a href="index.html#eventos">Eventos</a></li>
-                    <li><a href="index.html#contacto">Contacto</a></li>
+                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="quienes-somos.html">Quiénes Somos</a></li>
+                    <li><a href="proyecto-objetivos.html">Proyecto y Objetivos</a></li>
+                    <li><a href="clases.html">Clases Regulares</a></li>
+                    <li><a href="talleres.html">Talleres</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
                     <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="reservas.html">Reservar Plaza</a></li>
                 </ul>
             </div>
         </div>
@@ -456,36 +520,83 @@
     </a>
 
     <script>
-        // Formulario de reserva
-        const reservaForm = document.getElementById('reserva-form');
-        
-        reservaForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Recoger datos del formulario
-            const formData = new FormData(reservaForm);
-            const nombre = formData.get('nombre');
-            const email = formData.get('email');
-            const telefono = formData.get('telefono');
-            const participantes = formData.get('participantes');
-            const tipoActividad = formData.get('tipo-actividad');
-            const fechaPreferred = formData.get('fecha-preferred');
-            const horarioPreferred = formData.get('horario-preferred');
-            const mensaje = formData.get('mensaje');
-            
-            // Crear mensaje para email
-            const emailSubject = `Solicitud de Reserva - ${nombre}`;
-            const emailBody = `Nombre: ${nombre}%0D%0AEmail: ${email}%0D%0ATeléfono: ${telefono}%0D%0AParticipantes: ${participantes}%0D%0AActividad: ${tipoActividad}%0D%0AFecha preferente: ${fechaPreferred}%0D%0AHorario preferente: ${horarioPreferred}%0D%0AMensaje: ${mensaje || 'Ninguno'}`;
-            
-            // Redirigir a email
-            window.open(`mailto:elpuntfamiliart@gmail.com?subject=${emailSubject}&body=${emailBody}`);
-            
-            // Resetear formulario
-            reservaForm.reset();
-            
-            // Mensaje de confirmación
-            alert('¡Gracias por tu solicitud! Se abrirá tu cliente de correo para que puedas enviarnos tu reserva.');
+        // Menú Hamburguesa Sticky
+        const hamburgerMenuSticky = document.getElementById('hamburgerMenuSticky');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const closeMenu = document.getElementById('closeMenu');
+
+        hamburgerMenuSticky.addEventListener('click', () => {
+            mobileMenu.classList.add('show');
         });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('show');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const mobileNavLinks = document.querySelectorAll('.mobile-menu-content ul li a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('show');
+            });
+        });
+
+        // Sistema de selección de tipo de reserva
+        const reservationTypes = document.querySelectorAll('.reservation-type');
+        const reservationTypeSelect = document.getElementById('reservation-type-select');
+
+        reservationTypes.forEach(type => {
+            type.addEventListener('click', () => {
+                // Remover clase active de todos
+                reservationTypes.forEach(t => t.classList.remove('active'));
+                // Añadir clase active al clickeado
+                type.classList.add('active');
+                // Actualizar el select con el valor del tipo clickeado
+                const selectedType = type.getAttribute('data-type');
+                reservationTypeSelect.value = selectedType;
+            });
+        });
+
+        // Actualizar la selección visual si cambia el select
+        reservationTypeSelect.addEventListener('change', () => {
+            const selectedValue = reservationTypeSelect.value;
+            reservationTypes.forEach(t => {
+                if (t.getAttribute('data-type') === selectedValue) {
+                    reservationTypes.forEach(other => other.classList.remove('active'));
+                    t.classList.add('active');
+                }
+            });
+        });
+
+        // Formulario de reserva
+        const reservationForm = document.getElementById('reservation-form');
+        if (reservationForm) {
+            reservationForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Recoger datos del formulario
+                const formData = new FormData(reservationForm);
+                const name = formData.get('reservation-name');
+                const email = formData.get('reservation-email');
+                const phone = formData.get('reservation-phone');
+                const type = formData.get('reservation-type');
+                const message = formData.get('reservation-message');
+
+                // Mapear el tipo de reserva a texto legible
+                const typeLabels = {
+                    'clase': 'Clase Regular',
+                    'taller': 'Taller Especial',
+                    'evento': 'Evento Privado'
+                };
+                const typeText = typeLabels[type] || type;
+
+                // Crear mensaje para WhatsApp
+                const whatsappMessage = `Hola, me gustaría hacer una reserva:%0A%0A*Nombre:* ${name}%0A*Email:* ${email}%0A*Teléfono:* ${phone}%0A*Tipo de reserva:* ${typeText}%0A*Mensaje:* ${message || 'Ninguno'}`;
+                // Redirigir a WhatsApp
+                window.open(`https://wa.me/34657917174?text=${whatsappMessage}`, '_blank');
+                // Resetear formulario
+                reservationForm.reset();
+            });
+        }
     </script>
 </body>
 </html>
