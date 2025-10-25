@@ -280,31 +280,21 @@
         }
         .team-container {
             display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
             justify-content: center;
-            align-items: center;
-            position: relative;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-        }
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease;
         }
         .team-member {
             background-color: var(--blanco);
+            border-radius: 15px;
             overflow: hidden;
             max-width: 350px;
             transition: all 0.4s ease;
-            flex: 0 0 100%;
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            flex: 1;
+            min-width: 300px;
         }
         .member-img {
             height: 300px;
@@ -343,53 +333,6 @@
             color: var(--gris);
             line-height: 1.6;
             font-size: 1rem;
-        }
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--rosa);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            z-index: 10;
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        .carousel-btn:hover {
-            background-color: var(--amarillo);
-            color: var(--texto);
-            transform: translateY(-50%) scale(1.1);
-        }
-        .carousel-btn.prev {
-            left: -70px;
-        }
-        .carousel-btn.next {
-            right: -70px;
-        }
-        .carousel-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-            gap: 10px;
-        }
-        .indicator {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--borde);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .indicator.active {
-            background-color: var(--rosa);
         }
 
         /* Footer */
@@ -513,33 +456,18 @@
                 align-items: center;
                 gap: 20px;
             }
-            .team-container {
-                display: flex;
-                gap: 40px;
-                justify-content: center;
-            }
-            .carousel-container {
-                overflow: visible;
-                width: auto;
-            }
-            .carousel-track {
-                transform: none !important;
-                display: flex;
-                gap: 40px;
-            }
-            .team-member {
-                flex: 0 0 auto;
-            }
-            .carousel-btn {
-                display: none;
-            }
-            .carousel-indicators {
-                display: none;
-            }
         }
         @media (max-width: 768px) {
             .section-header h2 {
                 font-size: 2.2rem;
+            }
+            .team-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .team-member {
+                width: 100%;
+                max-width: 400px;
             }
         }
         @media (max-width: 576px) {
@@ -634,37 +562,23 @@
             <div class="team-section">
                 <h3>Nuestro Equipo</h3>
                 <div class="team-container">
-                    <button class="carousel-btn prev" id="teamPrev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="carousel-container">
-                        <div class="carousel-track" id="teamTrack">
-                            <div class="team-member">
-                                <div class="member-img eva">
-                                    <!-- Imagen de Eva -->
-                                </div>
-                                <div class="member-info">
-                                    <h3>Eva</h3>
-                                    <p>Arteterapeuta y artista, con años de experiencia en educación artística. Mi pasión es acompañar procesos creativos y emocionales con sensibilidad y cuidado, creando espacios donde cada persona pueda expresarse con libertad.</p>
-                                </div>
-                            </div>
-                            <div class="team-member">
-                                <div class="member-img laura">
-                                    <!-- Imagen de Laura -->
-                                </div>
-                                <div class="member-info">
-                                    <h3>Laura</h3>
-                                    <p>Maestra de infantil y primaria, con experiencia en el mundo de la educación y un vínculo muy especial con los peques, a quienes me gusta acompañar desde la ternura, la cercanía y el juego.</p>
-                                </div>
-                            </div>
+                    <div class="team-member">
+                        <div class="member-img eva">
+                            <!-- Imagen de Eva -->
+                        </div>
+                        <div class="member-info">
+                            <h3>Eva</h3>
+                            <p>Arteterapeuta y artista, con años de experiencia en educación artística. Mi pasión es acompañar procesos creativos y emocionales con sensibilidad y cuidado, creando espacios donde cada persona pueda expresarse con libertad.</p>
                         </div>
                     </div>
-                    <button class="carousel-btn next" id="teamNext">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <div class="carousel-indicators">
-                        <div class="indicator active" data-index="0"></div>
-                        <div class="indicator" data-index="1"></div>
+                    <div class="team-member">
+                        <div class="member-img laura">
+                            <!-- Imagen de Laura -->
+                        </div>
+                        <div class="member-info">
+                            <h3>Laura</h3>
+                            <p>Maestra de infantil y primaria, con experiencia en el mundo de la educación y un vínculo muy especial con los peques, a quienes me gusta acompañar desde la ternura, la cercanía y el juego.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -723,58 +637,6 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('show');
             });
-        });
-
-        // Carousel functionality - Mejorado para mostrar solo un elemento a la vez
-        function initCarousel(prevBtnId, nextBtnId, trackId, indicatorsSelector, itemCount) {
-            const prevBtn = document.getElementById(prevBtnId);
-            const nextBtn = document.getElementById(nextBtnId);
-            const track = document.getElementById(trackId);
-            const indicators = document.querySelectorAll(indicatorsSelector);
-            let currentIndex = 0;
-
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                // Actualizar indicadores
-                if (indicators) {
-                    indicators.forEach((indicator, index) => {
-                        if (index === currentIndex) {
-                            indicator.classList.add('active');
-                        } else {
-                            indicator.classList.remove('active');
-                        }
-                    });
-                }
-            }
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
-                    updateCarousel();
-                });
-            }
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % itemCount;
-                    updateCarousel();
-                });
-            }
-            // Agregar eventos a los indicadores
-            if (indicators) {
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
-                        currentIndex = index;
-                        updateCarousel();
-                    });
-                });
-            }
-            // Initialize
-            updateCarousel();
-        }
-
-        // Initialize all carousels
-        document.addEventListener('DOMContentLoaded', () => {
-            initCarousel('teamPrev', 'teamNext', 'teamTrack', '.team-section .indicator', 2);
         });
     </script>
 </body>
