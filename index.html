@@ -1017,43 +1017,50 @@
                 width: 100%;
             }
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 4.5rem;
                 text-align: center;
-                margin: 0 auto 20px;
-                /* MODIFICACIÓN: Color sólido en lugar de gradiente */
+                margin: 0 auto 30px;
                 background: none;
                 -webkit-text-fill-color: initial;
                 color: var(--rosa);
-                text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
-                line-height: 1.1;
+                text-shadow: 2px 2px 12px rgba(0,0,0,0.15);
+                line-height: 1;
                 padding: 0 10px;
                 position: relative;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                font-weight: 700;
             }
             .hero h1 .line1,
             .hero h1 .line2 {
                 display: block;
             }
             .hero h1 .line1 {
-                font-size: 3rem;
-                margin-bottom: 5px;
+                font-size: 4rem;
+                margin-bottom: 10px;
+                font-weight: 600;
             }
             .hero h1 .line2 {
-                font-size: 3.2rem;
+                font-size: 4.8rem;
                 font-weight: 700;
+                position: relative;
+            }
+            /* Color diferente para ART */
+            .hero h1 .line2 .art-part {
+                color: var(--amarillo);
+                text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
             }
             .hero h1::after {
                 content: '';
                 position: absolute;
-                bottom: -15px;
+                bottom: -20px;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 120px;
-                height: 4px;
+                width: 150px;
+                height: 5px;
                 background: linear-gradient(to right, var(--rosa), var(--amarillo));
-                border-radius: 2px;
+                border-radius: 3px;
             }
             .hero p {
                 font-size: 1rem;
@@ -1214,13 +1221,13 @@
         }
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 4rem;
             }
             .hero h1 .line1 {
-                font-size: 2.7rem;
+                font-size: 3.5rem;
             }
             .hero h1 .line2 {
-                font-size: 2.9rem;
+                font-size: 4.2rem;
             }
             .section-header h2 {
                 font-size: 2.2rem;
@@ -1250,13 +1257,13 @@
         }
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
             }
             .hero h1 .line1 {
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
             .hero h1 .line2 {
-                font-size: 2.4rem;
+                font-size: 3.7rem;
             }
             .section-header h2 {
                 font-size: 2rem;
@@ -1279,13 +1286,13 @@
         }
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 2.1rem;
+                font-size: 3rem;
             }
             .hero h1 .line1 {
-                font-size: 1.9rem;
+                font-size: 2.6rem;
             }
             .hero h1 .line2 {
-                font-size: 2.1rem;
+                font-size: 3.2rem;
             }
             .section-header h2 {
                 font-size: 1.8rem;
@@ -1305,13 +1312,13 @@
         }
         @media (max-width: 380px) {
             .hero h1 {
-                font-size: 1.9rem;
+                font-size: 2.6rem;
             }
             .hero h1 .line1 {
-                font-size: 1.7rem;
+                font-size: 2.2rem;
             }
             .hero h1 .line2 {
-                font-size: 1.9rem;
+                font-size: 2.8rem;
             }
             .btn-container {
                 gap: 6px;
@@ -1373,7 +1380,7 @@
         <div class="hero-content">
             <h1>
                 <span class="line1">El Punt</span>
-                <span class="line2">FamiliART</span>
+                <span class="line2">Famili<span class="art-part">ART</span></span>
             </h1>
             <p>Un espacio creativo donde el arte y la comunidad se encuentran. Talleres y clases para todas las edades en un ambiente inspirador.</p>
             <div class="btn-container">
@@ -1542,7 +1549,7 @@
                         </tr>
                         <tr>
                             <td>Miércoles</td>
-                            <td>Primaria - Ciclo inicial (1º y 2º)</td>
+                            <td>Primaria - Ciclo inicial (1º and 2º)</td>
                             <td>17:30h - 19:00h</td>
                         </tr>
                         <tr>
