@@ -267,29 +267,40 @@
             margin-bottom: 20px;
             color: var(--texto);
         }
+        .btn {
+            background-color: var(--rosa);
+            color: var(--blanco);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+        }
         .workshop-list {
             flex: 1;
             min-width: 300px;
             position: relative;
         }
-        .workshop-carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-        .workshop-track {
-            display: flex;
-            transition: transform 0.5s ease;
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
         .workshop-item {
             background-color: var(--blanco);
             border-radius: 10px;
             padding: 25px;
-            margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             border: 1px solid var(--borde);
-            flex: 0 0 100%;
         }
         .workshop-item:hover {
             transform: translateY(-5px);
@@ -435,19 +446,6 @@
                 align-items: center;
                 gap: 20px;
             }
-            .workshop-carousel {
-                overflow: visible;
-            }
-            .workshop-track {
-                transform: none !important;
-                display: flex;
-                gap: 40px;
-                justify-content: center;
-            }
-            .workshop-item {
-                flex: 0 0 auto;
-                max-width: 350px; /* Ajuste para escritorio */
-            }
         }
         @media (max-width: 768px) {
             .section-header h2 {
@@ -458,6 +456,9 @@
             }
             .workshop-info, .workshop-list {
                 width: 100%;
+            }
+            .workshop-grid {
+                grid-template-columns: 1fr;
             }
         }
         @media (max-width: 576px) {
@@ -524,7 +525,7 @@
                 <span>El Punt Famili<span>ART</span></span>
             </div>
             <ul>
-                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html">Inicio</a></li>
                 <li><a href="quienes-somos.html">Quiénes Somos</a></li>
                 <li><a href="proyecto-objetivos.html">Proyecto</a></li>
                 <li><a href="clases-regulares.html">Clases</a></li>
@@ -552,57 +553,47 @@
                 <a href="reservas.html" class="btn">Reserva tu plaza</a>
             </div>
             <div class="workshop-list">
-                <div class="team-container">
-                    <button class="carousel-btn prev" id="workshopPrev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="workshop-carousel">
-                        <div class="workshop-track" id="workshopTrack">
-                            <div class="workshop-item">
-                                <h4>Pintura con Acuarela</h4>
-                                <p>Descubre las técnicas básicas de la acuarela y crea tus propias obras llenas de color y transparencia.</p>
-                                <div class="workshop-meta">
-                                    <span>Viernes 18:00-20:00</span>
-                                    <span>25€</span>
-                                </div>
-                            </div>
-                            <div class="workshop-item">
-                                <h4>Creación con Arcilla</h4>
-                                <p>Modela y da forma a la arcilla para crear piezas únicas que luego podrás pintar y llevar a casa.</p>
-                                <div class="workshop-meta">
-                                    <span>Viernes 18:00-20:00</span>
-                                    <span>30€</span>
-                                </div>
-                            </div>
-                            <div class="workshop-item">
-                                <h4>Arte Reciclado</h4>
-                                <p>Aprende a transformar materiales cotidianos en obras de arte originales y respetuosas con el medio ambiente.</p>
-                                <div class="workshop-meta">
-                                    <span>Viernes 18:00-20:00</span>
-                                    <span>20€</span>
-                                </div>
-                            </div>
-                             <div class="workshop-item">
-                                <h4>Arte en Familia</h4>
-                                <p>Un taller especial donde padres e hijos pueden crear juntos y compartir una experiencia artística única.</p>
-                                <div class="workshop-meta">
-                                    <span>Sábado 11:00-13:00</span>
-                                    <span>40€</span>
-                                </div>
-                            </div>
-                             <div class="workshop-item">
-                                <h4>Monográfico de Collage</h4>
-                                <p>Explora el collage como técnica de composición y expresión visual.</p>
-                                <div class="workshop-meta">
-                                    <span>Sábado 18:00-20:00</span>
-                                    <span>22€</span>
-                                </div>
-                            </div>
+                <div class="workshop-grid">
+                    <div class="workshop-item">
+                        <h4>Pintura con Acuarela</h4>
+                        <p>Descubre las técnicas básicas de la acuarela y crea tus propias obras llenas de color y transparencia.</p>
+                        <div class="workshop-meta">
+                            <span>Viernes 18:00-20:00</span>
+                            <span>25€</span>
                         </div>
                     </div>
-                    <button class="carousel-btn next" id="workshopNext">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                    <div class="workshop-item">
+                        <h4>Creación con Arcilla</h4>
+                        <p>Modela y da forma a la arcilla para crear piezas únicas que luego podrás pintar y llevar a casa.</p>
+                        <div class="workshop-meta">
+                            <span>Viernes 18:00-20:00</span>
+                            <span>30€</span>
+                        </div>
+                    </div>
+                    <div class="workshop-item">
+                        <h4>Arte Reciclado</h4>
+                        <p>Aprende a transformar materiales cotidianos en obras de arte originales y respetuosas con el medio ambiente.</p>
+                        <div class="workshop-meta">
+                            <span>Viernes 18:00-20:00</span>
+                            <span>20€</span>
+                        </div>
+                    </div>
+                    <div class="workshop-item">
+                        <h4>Arte en Familia</h4>
+                        <p>Un taller especial donde padres e hijos pueden crear juntos y compartir una experiencia artística única.</p>
+                        <div class="workshop-meta">
+                            <span>Sábado 11:00-13:00</span>
+                            <span>40€</span>
+                        </div>
+                    </div>
+                    <div class="workshop-item">
+                        <h4>Monográfico de Collage</h4>
+                        <p>Explora el collage como técnica de composición y expresión visual.</p>
+                        <div class="workshop-meta">
+                            <span>Sábado 18:00-20:00</span>
+                            <span>22€</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -618,7 +609,7 @@
             <div class="footer-links">
                 <h3>Enlaces Rápidos</h3>
                 <ul>
-                    <li><a href="index.html#inicio">Inicio</a></li>
+                    <li><a href="index.html">Inicio</a></li>
                     <li><a href="quienes-somos.html">Quiénes Somos</a></li>
                     <li><a href="proyecto-objetivos.html">Proyecto y Objetivos</a></li>
                     <li><a href="clases-regulares.html">Clases Regulares</a></li>
@@ -660,58 +651,6 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('show');
             });
-        });
-
-        // Carousel functionality - Mejorado para mostrar solo un elemento a la vez
-        function initCarousel(prevBtnId, nextBtnId, trackId, indicatorsSelector, itemCount) {
-            const prevBtn = document.getElementById(prevBtnId);
-            const nextBtn = document.getElementById(nextBtnId);
-            const track = document.getElementById(trackId);
-            const indicators = document.querySelectorAll(indicatorsSelector);
-            let currentIndex = 0;
-
-            function updateCarousel() {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                // Actualizar indicadores
-                if (indicators) {
-                    indicators.forEach((indicator, index) => {
-                        if (index === currentIndex) {
-                            indicator.classList.add('active');
-                        } else {
-                            indicator.classList.remove('active');
-                        }
-                    });
-                }
-            }
-
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex - 1 + itemCount) % itemCount;
-                    updateCarousel();
-                });
-            }
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex + 1) % itemCount;
-                    updateCarousel();
-                });
-            }
-            // Agregar eventos a los indicadores
-            if (indicators) {
-                indicators.forEach((indicator, index) => {
-                    indicator.addEventListener('click', () => {
-                        currentIndex = index;
-                        updateCarousel();
-                    });
-                });
-            }
-            // Initialize
-            updateCarousel();
-        }
-
-        // Initialize all carousels
-        document.addEventListener('DOMContentLoaded', () => {
-            initCarousel('workshopPrev', 'workshopNext', 'workshopTrack', null, 5); // No indicators for workshops
         });
     </script>
 </body>
