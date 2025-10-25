@@ -1020,14 +1020,29 @@
                 font-size: 3.5rem;
                 text-align: center;
                 margin: 0 auto 20px;
-                background: linear-gradient(135deg, var(--rosa), var(--amarillo));
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
+                /* MODIFICACIÓN: Color sólido en lugar de gradiente */
+                background: none;
+                -webkit-text-fill-color: initial;
+                color: var(--rosa);
                 text-shadow: 2px 2px 8px rgba(0,0,0,0.15);
                 line-height: 1.1;
                 padding: 0 10px;
                 position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero h1 .line1,
+            .hero h1 .line2 {
+                display: block;
+            }
+            .hero h1 .line1 {
+                font-size: 3rem;
+                margin-bottom: 5px;
+            }
+            .hero h1 .line2 {
+                font-size: 3.2rem;
+                font-weight: 700;
             }
             .hero h1::after {
                 content: '';
@@ -1201,6 +1216,12 @@
             .hero h1 {
                 font-size: 3rem;
             }
+            .hero h1 .line1 {
+                font-size: 2.7rem;
+            }
+            .hero h1 .line2 {
+                font-size: 2.9rem;
+            }
             .section-header h2 {
                 font-size: 2.2rem;
             }
@@ -1231,6 +1252,12 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
+            .hero h1 .line1 {
+                font-size: 2.2rem;
+            }
+            .hero h1 .line2 {
+                font-size: 2.4rem;
+            }
             .section-header h2 {
                 font-size: 2rem;
             }
@@ -1240,9 +1267,6 @@
             .logo-icon {
                 width: 40px;
                 height: 40px;
-            }
-            .hero h1 {
-                font-size: 2.3rem;
             }
             .btn-container {
                 gap: 10px;
@@ -1255,6 +1279,12 @@
         }
         @media (max-width: 480px) {
             .hero h1 {
+                font-size: 2.1rem;
+            }
+            .hero h1 .line1 {
+                font-size: 1.9rem;
+            }
+            .hero h1 .line2 {
                 font-size: 2.1rem;
             }
             .section-header h2 {
@@ -1275,6 +1305,12 @@
         }
         @media (max-width: 380px) {
             .hero h1 {
+                font-size: 1.9rem;
+            }
+            .hero h1 .line1 {
+                font-size: 1.7rem;
+            }
+            .hero h1 .line2 {
                 font-size: 1.9rem;
             }
             .btn-container {
@@ -1344,6 +1380,7 @@
                 <a href="reservas.html" class="btn">Reservar Plaza</a>
                 <a href="#contacto" class="btn btn-outline">Contactar</a>
             </div>
+        </div>
         <div class="hero-images">
             <div class="image-collage">
                 <div class="collage-item">
