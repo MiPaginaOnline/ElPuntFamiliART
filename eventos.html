@@ -41,7 +41,7 @@
             line-height: 1.3;
         }
 
-        /* Header Sticky */
+        /* Header Sticky - Visible en todas las pantallas */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -53,53 +53,90 @@
             z-index: 1000;
             padding: 10px 5%;
             transition: all 0.3s ease;
-            display: none; /* Oculto por defecto */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        @media (max-width: 992px) {
-            header {
-                display: flex; /* Visible en móvil */
-                justify-content: space-between;
-                align-items: center;
-            }
-            .logo-sticky {
-                display: flex;
-                align-items: center;
-                gap: 10px;
-            }
-            .logo-sticky img {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-                object-fit: cover;
-                border: 1px solid var(--borde);
-            }
-            .logo-sticky span {
-                font-size: 1.2rem;
-                font-weight: 700;
-                color: var(--texto);
-                font-family: 'Playfair Display', serif;
-            }
-            .logo-sticky span span {
-                color: var(--rosa);
-            }
-            .hamburger-menu-sticky {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-            }
-            .bar {
-                width: 25px;
-                height: 2px;
-                background-color: var(--texto);
-                margin: 3px 0;
-                transition: 0.4s;
-            }
+        
+        /* Logo Sticky */
+        .logo-sticky {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
+        .logo-sticky img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--borde);
+        }
+        .logo-sticky span {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--texto);
+            font-family: 'Playfair Display', serif;
+        }
+        .logo-sticky span span {
+            color: var(--rosa);
+        }
+        
+        /* Botón Inicio */
+        .home-btn {
+            background-color: var(--rosa);
+            color: var(--blanco);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .home-btn:hover {
+            background-color: var(--amarillo);
+            color: var(--texto);
+        }
+        
+        /* Menú Hamburguesa Sticky */
+        .hamburger-menu-sticky {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .bar {
+            width: 25px;
+            height: 2px;
+            background-color: var(--texto);
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+        
+        /* Navegación escritorio */
+        .desktop-nav {
+            display: none;
+        }
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        .desktop-nav ul li a {
+            text-decoration: none;
+            color: var(--texto);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .desktop-nav ul li a:hover {
+            color: var(--rosa);
+        }
+        
         /* Mobile Menu */
         .mobile-menu {
             display: none;
@@ -374,6 +411,43 @@
             .section-header p {
                 font-size: 1rem;
             }
+            .desktop-nav {
+                display: none;
+            }
+            .hamburger-menu-sticky {
+                display: flex;
+            }
+            .header-right {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+        @media (min-width: 993px) {
+            .hamburger-menu-sticky {
+                display: none;
+            }
+            .desktop-nav {
+                display: block;
+            }
+            .header-right {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+            .events-carousel {
+                overflow: visible;
+            }
+            .events-track {
+                transform: none !important;
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+            }
+            .event-item {
+                flex: 0 0 auto;
+                max-width: 350px; /* Ajuste para escritorio */
+            }
         }
         @media (max-width: 768px) {
             .section-header h2 {
@@ -398,36 +472,46 @@
             .btn-outline {
                 margin-left: 0;
             }
-        }
-        /* Versión escritorio - Eliminar estilo carrusel */
-        @media (min-width: 993px) {
-            .events-carousel {
-                overflow: visible;
+            .header-right {
+                gap: 10px;
             }
-            .events-track {
-                transform: none !important;
-                display: flex;
-                gap: 40px;
-                justify-content: center;
-            }
-            .event-item {
-                flex: 0 0 auto;
-                max-width: 350px; /* Ajuste para escritorio */
+            .home-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header Sticky (Solo en móvil) -->
+    <!-- Header Sticky (Visible en todas las pantallas) -->
     <header>
         <div class="logo-sticky">
             <img src="Captura de pantalla 2025-10-20 175523.png" alt="Logo El Punt FamiliART">
             <span>El Punt Famili<span>ART</span></span>
         </div>
-        <div class="hamburger-menu-sticky" id="hamburgerMenuSticky">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+        
+        <div class="header-right">
+            <!-- Botón Inicio (visible en móvil y escritorio) -->
+            <a href="index.html" class="home-btn">Inicio</a>
+            
+            <!-- Navegación escritorio -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html#quien-somos">Quiénes Somos</a></li>
+                    <li><a href="index.html#proyecto-objetivos">Proyecto</a></li>
+                    <li><a href="clases.html">Clases</a></li>
+                    <li><a href="talleres.html">Talleres</a></li>
+                    <li><a href="eventos.html">Eventos</a></li>
+                    <li><a href="index.html#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Menú Hamburguesa (solo móvil) -->
+            <div class="hamburger-menu-sticky" id="hamburgerMenuSticky">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </header>
 
