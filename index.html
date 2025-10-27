@@ -1802,7 +1802,6 @@
             </div>
             <nav>
                 <ul class="nav-links">
-                    <!-- MODIFICACIÓN: Los enlaces ahora apuntan a las páginas específicas -->
                     <li><a href="quienes-somos.html">Quiénes Somos</a></li>
                     <li><a href="proyecto-objetivos.html">Proyecto</a></li>
                     <li><a href="clases-regulares.html">Clases</a></li>
@@ -1822,7 +1821,6 @@
         <!-- Menú móvil -->
         <div class="mobile-menu" id="mobileMenu">
             <ul class="mobile-nav-links">
-                <!-- MODIFICACIÓN: Los enlaces del menú móvil también apuntan a las páginas específicas -->
                 <li><a href="quienes-somos.html">Quiénes Somos</a></li>
                 <li><a href="proyecto-objetivos.html">Proyecto</a></li>
                 <li><a href="clases-regulares.html">Clases</a></li>
@@ -2278,6 +2276,15 @@
     </a>
 
     <script>
+        // Variables globales para los índices de los carruseles
+        let teamCurrentIndex = 0;
+        let stageCurrentIndex = 0;
+        let workshopCurrentIndex = 0;
+        let eventCurrentIndex = 0;
+
+        // Variables para almacenar los intervalos de cada carrusel
+        let teamInterval, stageInterval, workshopInterval, eventInterval;
+
         // Menú Hamburguesa
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -2353,7 +2360,6 @@
         const teamCarousel = document.getElementById('teamCarousel');
         const prevTeamBtn = document.getElementById('prevTeamBtn');
         const nextTeamBtn = document.getElementById('nextTeamBtn');
-        let teamCurrentIndex = 0;
         const teamItems = document.querySelectorAll('#teamCarousel .carousel-item');
         const teamTotalItems = teamItems.length;
         
@@ -2361,21 +2367,34 @@
             teamCarousel.style.transform = `translateX(-${teamCurrentIndex * 100}%)`;
         }
         
-        nextTeamBtn.addEventListener('click', () => {
+        function nextTeamSlide() {
             teamCurrentIndex = (teamCurrentIndex + 1) % teamTotalItems;
             updateTeamCarousel();
+        }
+        
+        function prevTeamSlide() {
+            teamCurrentIndex = (teamCurrentIndex - 1 + teamTotalItems) % teamTotalItems;
+            updateTeamCarousel();
+        }
+        
+        nextTeamBtn.addEventListener('click', () => {
+            nextTeamSlide();
+            // Pausar y reanudar auto-desplazamiento
+            clearInterval(teamInterval);
+            teamInterval = startAutoSlide('team');
         });
         
         prevTeamBtn.addEventListener('click', () => {
-            teamCurrentIndex = (teamCurrentIndex - 1 + teamTotalItems) % teamTotalItems;
-            updateTeamCarousel();
+            prevTeamSlide();
+            // Pausar y reanudar auto-desplazamiento
+            clearInterval(teamInterval);
+            teamInterval = startAutoSlide('team');
         });
         
         // Carrusel de etapas
         const stageCarousel = document.getElementById('stageCarousel');
         const prevStageBtn = document.getElementById('prevStageBtn');
         const nextStageBtn = document.getElementById('nextStageBtn');
-        let stageCurrentIndex = 0;
         const stageItems = document.querySelectorAll('#stageCarousel .stage-card');
         const stageTotalItems = stageItems.length;
         
@@ -2383,21 +2402,34 @@
             stageCarousel.style.transform = `translateX(-${stageCurrentIndex * 100}%)`;
         }
         
-        nextStageBtn.addEventListener('click', () => {
+        function nextStageSlide() {
             stageCurrentIndex = (stageCurrentIndex + 1) % stageTotalItems;
             updateStageCarousel();
+        }
+        
+        function prevStageSlide() {
+            stageCurrentIndex = (stageCurrentIndex - 1 + stageTotalItems) % stageTotalItems;
+            updateStageCarousel();
+        }
+        
+        nextStageBtn.addEventListener('click', () => {
+            nextStageSlide();
+            // Pausar y reanudar auto-desplazamiento
+            clearInterval(stageInterval);
+            stageInterval = startAutoSlide('stage');
         });
         
         prevStageBtn.addEventListener('click', () => {
-            stageCurrentIndex = (stageCurrentIndex - 1 + stageTotalItems) % stageTotalItems;
-            updateStageCarousel();
+            prevStageSlide();
+            // Pausar y reanudar auto-desplazamiento
+            clearInterval(stageInterval);
+            stageInterval = startAutoSlide('stage');
         });
         
         // Carrusel de talleres
         const workshopCarousel = document.getElementById('workshopCarousel');
         const prevWorkshopBtn = document.getElementById('prevWorkshopBtn');
         const nextWorkshopBtn = document.getElementById('nextWorkshopBtn');
-        let workshopCurrentIndex = 0;
         const workshopItems = document.querySelectorAll('#workshopCarousel .workshop-item');
         const workshopTotalItems = workshopItems.length;
         
@@ -2405,21 +2437,34 @@
             workshopCarousel.style.transform = `translateX(-${workshopCurrentIndex * 100}%)`;
         }
         
-        nextWorkshopBtn.addEventListener('click', () => {
+        function nextWorkshopSlide() {
             workshopCurrentIndex = (workshopCurrentIndex + 1) % workshopTotalItems;
             updateWorkshopCarousel();
+        }
+        
+        function prevWorkshopSlide() {
+            workshopCurrentIndex = (workshopCurrentIndex - 1 + workshopTotalItems) % workshopTotalItems;
+            updateWorkshopCarousel();
+        }
+        
+        nextWorkshopBtn.addEventListener('click', () => {
+            nextWorkshopSlide();
+            // Pausar y reanudar auto-desplazamiento
+            clearInterval(workshopInterval);
+            workshopInterval = startAutoSlide('workshop');
         });
         
         prevWorkshopBtn.addEventListener('click', () => {
-            workshopCurrentIndex = (workshopCurrentIndex - 1 + workshopTotalItems) % workshopTotalItems;
-            updateWorkshopCarousel();
+            prevWorkshopSlide();
+            // Pausar y reanudar auto-desplazamiento
+            clearInterval(workshopInterval);
+            workshopInterval = startAutoSlide('workshop');
         });
         
         // Carrusel de eventos
         const eventCarousel = document.getElementById('eventCarousel');
         const prevEventBtn = document.getElementById('prevEventBtn');
         const nextEventBtn = document.getElementById('nextEventBtn');
-        let eventCurrentIndex = 0;
         const eventItems = document.querySelectorAll('#eventCarousel .event-item');
         const eventTotalItems = eventItems.length;
         
@@ -2427,14 +2472,95 @@
             eventCarousel.style.transform = `translateX(-${eventCurrentIndex * 100}%)`;
         }
         
-        nextEventBtn.addEventListener('click', () => {
+        function nextEventSlide() {
             eventCurrentIndex = (eventCurrentIndex + 1) % eventTotalItems;
             updateEventCarousel();
+        }
+        
+        function prevEventSlide() {
+            eventCurrentIndex = (eventCurrentIndex - 1 + eventTotalItems) % eventTotalItems;
+            updateEventCarousel();
+        }
+        
+        nextEventBtn.addEventListener('click', () => {
+            nextEventSlide();
+            // Pausar y reanudar auto-desplazamiento
+            clearInterval(eventInterval);
+            eventInterval = startAutoSlide('event');
         });
         
         prevEventBtn.addEventListener('click', () => {
-            eventCurrentIndex = (eventCurrentIndex - 1 + eventTotalItems) % eventTotalItems;
-            updateEventCarousel();
+            prevEventSlide();
+            // Pausar y reanudar auto-desplazamiento
+            clearInterval(eventInterval);
+            eventInterval = startAutoSlide('event');
+        });
+        
+        // Función para iniciar el desplazamiento automático de carruseles
+        function startAutoSlide(carouselType) {
+            return setInterval(() => {
+                switch(carouselType) {
+                    case 'team':
+                        nextTeamSlide();
+                        break;
+                    case 'stage':
+                        nextStageSlide();
+                        break;
+                    case 'workshop':
+                        nextWorkshopSlide();
+                        break;
+                    case 'event':
+                        nextEventSlide();
+                        break;
+                }
+            }, 5000);
+        }
+
+        // Iniciar el desplazamiento automático cuando la página se carga
+        window.addEventListener('load', () => {
+            // Carrusel de equipo
+            teamInterval = startAutoSlide('team');
+            
+            // Carrusel de etapas
+            stageInterval = startAutoSlide('stage');
+            
+            // Carrusel de talleres
+            workshopInterval = startAutoSlide('workshop');
+            
+            // Carrusel de eventos
+            eventInterval = startAutoSlide('event');
+        });
+
+        // Pausar el desplazamiento automático cuando el ratón está sobre un carrusel
+        const carouselContainers = document.querySelectorAll('.carousel-container');
+        carouselContainers.forEach(container => {
+            container.addEventListener('mouseenter', () => {
+                // Identificar qué carrusel es
+                if (container.closest('#quien-somos')) {
+                    clearInterval(teamInterval);
+                } else if (container.closest('#clases-regulares')) {
+                    clearInterval(stageInterval);
+                } else if (container.closest('#talleres')) {
+                    clearInterval(workshopInterval);
+                } else if (container.closest('#eventos')) {
+                    clearInterval(eventInterval);
+                }
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                // Reanudar después de salir
+                setTimeout(() => {
+                    if (container.closest('#quien-somos')) {
+                        teamInterval = startAutoSlide('team');
+                    } else if (container.closest('#clases-regulares')) {
+                        stageInterval = startAutoSlide('stage');
+                    } else if (container.closest('#talleres')) {
+                        workshopInterval = startAutoSlide('workshop');
+                    } else if (container.closest('#eventos')) {
+                        eventInterval = startAutoSlide('event');
+                    }
+                }, 1000);
+            });
         });
         
         // Animaciones al hacer scroll - MÁS RÁPIDAS
